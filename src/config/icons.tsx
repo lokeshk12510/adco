@@ -48,3 +48,65 @@ export const PDFIcon = createSvgIcon(
     </>,
     'PDF'
 )
+
+export const CircleIcon = createSvgIcon(
+    <>
+        <circle cx="12" cy="12" r="10.5" stroke="#236F28" />
+        <circle cx="12" cy="12" r="11" fill="#07F58D" />
+    </>,
+    'Circle'
+)
+
+export const TriangleIcon = createSvgIcon(
+    <>
+        <g clipPath="url(#clip0_48_1051)">
+            <path
+                d="M13.3189 2.28456L22.961 20.0854C23.5024 21.0848 22.7788 22.2998 21.6421 22.2998H2.35789C1.22124 22.2998 0.497584 21.0848 1.03895 20.0854L10.6811 2.28457C11.2484 1.23713 12.7516 1.23713 13.3189 2.28456Z"
+                stroke="#993A16"
+                strokeOpacity="0.5"
+            />
+            <path
+                d="M10.2414 2.04642C10.9979 0.649845 13.0021 0.649843 13.7586 2.04642L23.4007 19.8472C24.1225 21.1798 23.1576 22.7998 21.6421 22.7998H2.35789C0.842353 22.7998 -0.122519 21.1798 0.599307 19.8472L10.2414 2.04642Z"
+                fill="#FEA92B"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_48_1051">
+                <rect width="24" height="24" fill="white" />
+            </clipPath>
+        </defs>
+    </>,
+    'Triangle'
+)
+
+export const DiamondIcon = createSvgIcon(
+    <>
+        <g clipPath="url(#clip0_48_1062)">
+            <rect
+                x="0.843605"
+                y="12.3803"
+                width="15.8059"
+                height="15.8059"
+                rx="1.5"
+                transform="rotate(-46.7837 0.843605 12.3803)"
+                stroke="#8C1E1E"
+                strokeOpacity="0.5"
+            />
+            <rect
+                x="0.136841"
+                y="12.4023"
+                width="16.8059"
+                height="16.8059"
+                rx="2"
+                transform="rotate(-46.7837 0.136841 12.4023)"
+                fill="#ED4B4F"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_48_1062">
+                <rect width="24" height="24" fill="white" />
+            </clipPath>
+        </defs>
+    </>,
+    'Diamond'
+)

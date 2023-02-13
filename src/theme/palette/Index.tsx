@@ -39,7 +39,7 @@ const Palette = (mode: PaletteMode, themeColor: ThemeColor) => {
         },
         mode: mode,
         primary: {
-            light: '#0047BA',
+            light: '#E3EEFF',
             main: '#0047BA',
             dark: '#0047BA',
             contrastText: '#FFF',

@@ -26,10 +26,6 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const goToProject = () => {
-        navigate(urls.projectInfo)
-    }
-
     const columns: GridColDef[] = [
         {
             field: 'status',
@@ -57,14 +53,14 @@ const Home = () => {
                     <GridActionsCellItem
                         icon={<RefreshIcon color="warning" fontSize="small" />}
                         label="Refresh"
-                        onClick={() => goToProject()}
+                        onClick={() => navigate(urls.trafficLight)}
                     />
                 </Tooltip>,
                 <Tooltip title={'View'} arrow key={'view'}>
                     <GridActionsCellItem
                         icon={<VisibilityIcon color="primary" fontSize="small" />}
                         label="View"
-                        onClick={() => goToProject()}
+                        onClick={() => navigate(urls.projectInfo)}
                     />
                 </Tooltip>,
             ],
