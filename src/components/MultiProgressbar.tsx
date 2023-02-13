@@ -19,6 +19,7 @@ const MultiProgressbar: FC<MultiProgressbarPrpos> = ({ colorVariants, label }) =
             {colorVariants.map((item, i) => {
                 return (
                     <Box
+                        key={i}
                         sx={{
                             width: item.width,
                             height: 20,

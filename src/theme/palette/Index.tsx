@@ -51,9 +51,9 @@ const Palette = (mode: PaletteMode, themeColor: ThemeColor) => {
             contrastText: '#FFF',
         },
         success: {
-            light: '#6AD01F',
-            main: '#56CA00',
-            dark: '#4CB200',
+            light: '#D9F4E8',
+            main: '#1EA067',
+            dark: '#1EA067',
             contrastText: '#FFF',
         },
         error: {

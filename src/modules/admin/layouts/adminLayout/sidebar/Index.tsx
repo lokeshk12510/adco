@@ -162,6 +162,9 @@ const StyledListWrapper = styled(List, {
     '& .MuiListItemIcon-root': {
         minWidth: 38,
         justifyContent: isSidebarOpen ? 'flex-start' : 'center',
+        '& .MuiSvgIcon-root': {
+            fontSize: isSidebarOpen ? 20 : 28,
+        },
     },
     '& .MuiListItemText-root': {
         display: isSidebarOpen ? 'block' : 'none',

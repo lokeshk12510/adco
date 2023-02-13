@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { InputLabel, styled } from '@mui/material'
 import Box from '@mui/material/Box'
 import { DataGrid } from '@mui/x-data-grid'
 
@@ -66,4 +66,8 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
     // '&.MuiDataGrid-root--densityStandard .MuiDataGrid-cell': {
     //     py: '7px',
     // },
+}))
+
+export const StyledLabel = styled(InputLabel)(({ theme }) => ({
+    color: theme.palette.common.black,
 }))
