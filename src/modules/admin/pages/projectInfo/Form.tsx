@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid'
 import { Controller } from 'react-hook-form'
 import AutoComplete from 'src/components/Form/AutoComplete'
 import DateField from 'src/components/Form/DateField'
+import ImageUploader from 'src/components/Form/ImageUploadField'
 import InputField from 'src/components/Form/InputField'
 import Review from './Review'
 
@@ -9,6 +10,9 @@ const ProjectInfoForm = () => {
     return (
         <form>
             <Grid container columnSpacing={4} rowSpacing={1}>
+                <Grid item xs={6} md={6} lg={4}>
+                    <ImageUploader />
+                </Grid>
                 <Grid item xs={6} md={6} lg={4}>
                     <Controller
                         rules={{

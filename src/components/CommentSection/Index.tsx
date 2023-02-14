@@ -2,7 +2,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, Grid, Stack } from '@mui/material'
 import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
-import FileUploader from '../Form/ImageUploadField'
+import FileUploader from '../Form/FileUploadField'
 import RichTextField from '../Form/RichTextField'
 import Comments from './comments/Index'
 
