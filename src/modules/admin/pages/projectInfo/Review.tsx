@@ -78,7 +78,6 @@ const Review = () => {
             </Typography>
             <Grid container spacing={2}>
                 {reviewList.map((item, i) => {
-                    console.log(item)
                     return (
                         <Grid item xs={12} md={6} lg={2.4} key={item.id}>
                             <StyledCard status={item.status} onClick={() => handleOpenModal(item)}>
