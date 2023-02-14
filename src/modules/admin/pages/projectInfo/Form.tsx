@@ -11,7 +11,20 @@ const ProjectInfoForm = () => {
         <form>
             <Grid container columnSpacing={4} rowSpacing={1}>
                 <Grid item xs={6} md={6} lg={4}>
-                    <ImageUploader />
+                    <Controller
+                        name="projectImage"
+                        render={({ field: { onChange, value }, fieldState: { error } }) => {
+                            return (
+                                <ImageUploader
+                                    label="Project Image"
+                                    value={value}
+                                    onChange={onChange}
+                                    error={!!Boolean(error)}
+                                    helperText={error?.message}
+                                />
+                            )
+                        }}
+                    />
                 </Grid>
                 <Grid item xs={6} md={6} lg={4}>
                     <Controller

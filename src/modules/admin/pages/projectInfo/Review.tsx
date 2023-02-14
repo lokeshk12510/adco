@@ -1,38 +1,110 @@
-import AddCircleIcon from '@mui/icons-material/AddCircle'
-import EditIcon from '@mui/icons-material/Edit'
-import { Box, Grid, IconButton, Typography, alpha, styled } from '@mui/material'
+import { AddCircle, Edit } from '@mui/icons-material'
+import { Box, Grid, IconButton, Stack, Typography, alpha, styled } from '@mui/material'
 import Paper from '@mui/material/Paper'
+import moment from 'moment'
+import { useEffect, useState } from 'react'
+import Dialog from 'src/components/Dialog'
+import DateField from 'src/components/Form/DateField'
 interface StyledCardProps {
     status: boolean
 }
 
+interface ReviewListProps {
+    name: string
+    title: string
+    status: boolean
+    approved_date: Date | null
+    id: number
+}
+
+const reviewList = [
+    {
+        name: 'contract_administrator',
+        title: 'Contract Administrator',
+        status: true,
+        approved_date: new Date(),
+        id: 1,
+    },
+    {
+        name: 'project_manager',
+        title: 'Project Manager',
+        status: false,
+        approved_date: null,
+        id: 2,
+    },
+    {
+        name: 'construction_manager',
+        title: 'Construction Manager',
+        status: true,
+        approved_date: new Date(),
+        id: 3,
+    },
+    {
+        name: 'commercial_manager',
+        title: 'Commercial Manager',
+        status: false,
+        approved_date: null,
+        id: 4,
+    },
+    {
+        name: 'planning_manager',
+        title: 'Planning Manager',
+        status: true,
+        approved_date: new Date(),
+        id: 5,
+    },
+]
+
 const Review = () => {
+    const [open, setOpen] = useState<boolean>(false)
+
+    const [value, setValue] = useState<Date | null>(null)
+
+    const [selectedField, setSelectedField] = useState<ReviewListProps | null>(null)
+
+    const handleOpenModal = (item: ReviewListProps) => {
+        setSelectedField(item)
+        setOpen(true)
+    }
+
+    useEffect(() => {
+        setValue(selectedField?.approved_date || null)
+    }, [selectedField])
+
     return (
         <Root>
             <Typography variant="h6" fontWeight={'semi-blod'} mb={2}>
                 Sign Off & Review
             </Typography>
             <Grid container spacing={2}>
-                {[...new Array(5)].map((item, i) => {
-                    let status = i % 2 === 0
-
+                {reviewList.map((item, i) => {
+                    console.log(item)
                     return (
-                        <Grid item xs={12} md={6} lg={2.4} key={i}>
-                            <StyledCard status={status}>
+                        <Grid item xs={12} md={6} lg={2.4} key={item.id}>
+                            <StyledCard status={item.status} onClick={() => handleOpenModal(item)}>
                                 <div className="content">
                                     <>
-                                        Contract Administrator <br /> {status ? '18/01/2023' : '-'}{' '}
+                                        {item.title} <br />{' '}
+                                        {item.status ? moment(item.approved_date).format('Do MMM YYYY') : '-'}{' '}
                                     </>
                                     <IconButton color="primary" size="small">
-                                        {status ? <EditIcon /> : <AddCircleIcon />}
+                                        {item.status ? <Edit /> : <AddCircle />}
                                     </IconButton>
                                 </div>
-                                <div className="footer">{status ? 'Approved' : 'Not Approved'}</div>
+                                <div className="footer">{item.status ? 'Approved' : 'Not Approved'}</div>
                             </StyledCard>
                         </Grid>
                     )
                 })}
             </Grid>
+
+            <Dialog open={open} setOpen={setOpen} title="Sign Off & Review" submitLabel="Approve">
+                {selectedField && (
+                    <Stack>
+                        <DateField value={value} onChange={(val) => setValue(val)} label={selectedField.title} />
+                    </Stack>
+                )}
+            </Dialog>
         </Root>
     )
 }

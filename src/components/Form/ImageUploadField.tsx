@@ -1,36 +1,49 @@
 import { Box, Typography, styled } from '@mui/material'
-import React, { useState } from 'react'
-import Images from 'src/config/images'
+import React, { FC } from 'react'
 
-function ImageUploader() {
-    const [file, setFile] = useState<string | null>(Images.ProjectImage)
+interface ImageUploaderProps {
+    value: string | null
+    onChange: (file: string | null) => void
+    label: string
+    error?: boolean
+    helperText?: string
+}
+
+const ImageUploader: FC<ImageUploaderProps> = (props) => {
+    const { value, onChange, label } = props
 
     const handleChange = async (event: React.ChangeEvent<HTMLInputElement>): Promise<any> => {
         if (event?.target?.files) {
             const fileLoaded = URL.createObjectURL(event.target.files[0])
-            const files = event.target.files
 
-            console.log('files: ', files)
-            setFile(fileLoaded)
+            onChange(fileLoaded)
         } else {
-            setFile(file)
+            onChange(value)
         }
     }
 
     return (
-        <Root component="label">
-            <input
-                type="file"
-                name="image"
-                hidden
-                onChange={handleChange}
-                accept="image/jpg,.gif,.png,.svg,.webp audio/wav,.mp3"
-            />
-            <div className="center">
-                <Typography> Upload Image </Typography>
-            </div>
-            {file && <img src={file} alt="files" />}
-        </Root>
+        <>
+            <Typography
+                fontSize={'12px'}
+                sx={(theme) => ({ color: theme.palette.common.black, transform: 'translate(1px, -1px) scale(1)' })}
+            >
+                {label}
+            </Typography>
+            <Root component="label">
+                <input
+                    type="file"
+                    name="image"
+                    hidden
+                    onChange={handleChange}
+                    accept="image/jpg,.gif,.png,.svg,.webp audio/wav,.mp3"
+                />
+                <div className="center">
+                    <Typography> Upload Image </Typography>
+                </div>
+                {value && <img src={value} alt="files" />}
+            </Root>
+        </>
     )
 }
 export default ImageUploader

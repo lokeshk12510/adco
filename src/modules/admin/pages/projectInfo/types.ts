@@ -1,3 +1,4 @@
+import Images from "src/config/images"
 
 export type StateTypes = {
     value:string 
@@ -36,6 +37,8 @@ export type ProjectInfoFormValuesTypes = {
     gross_contract: string
     reviewer_comments: string
     files:any
+    projectImage:string|null
+
 }
 
 
@@ -59,5 +62,7 @@ export const ProjectInfoFormValues ={
     original_contract_sum: '',
     contract_duration: '',
     reviewer_comments: '',
-    files:''
+    files:'',
+    projectImage:Images.ProjectImage,
+    
 }
