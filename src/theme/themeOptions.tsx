@@ -31,7 +31,7 @@ const themeOptions = (settings: Settings) => {
         shadows: shadows(mode),
         breakpoints: breakpoints(),
         shape: {
-            borderRadius: 6,
+            borderRadius: 4,
         },
         mixins: {
             toolbar: {

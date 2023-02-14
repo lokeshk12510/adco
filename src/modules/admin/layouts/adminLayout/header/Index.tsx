@@ -11,11 +11,22 @@ import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
+import { useLocation } from 'react-router-dom'
 import Images from 'src/config/images'
 
 interface HeaderProps {
     isSidebarOpen: boolean
     handleSidebarToggle: () => void
+}
+
+const renderHeaderContent = (page: string) => {
+    if (page === '/') {
+        return 'Active PCR Projects'
+    } else if (page.includes('/project')) {
+        return 'Robina Office Building'
+    } else {
+        return ''
+    }
 }
 
 export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderProps) {
@@ -28,6 +39,8 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
     const handleMenuClose = () => {
         setAnchorEl(null)
     }
+
+    const location = useLocation()
 
     // MUi Scroll event hook
     const trigger = useScrollTrigger({
@@ -83,7 +96,7 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
                         {isSidebarOpen ? <CloseIcon /> : <SortIcon />}
                     </IconButton>
                     <Typography variant="h6" fontWeight={'bold'}>
-                        Active PCR Projects
+                        {renderHeaderContent(location.pathname)}
                     </Typography>
                 </Box>
 

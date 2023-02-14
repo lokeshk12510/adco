@@ -1,20 +1,28 @@
-import { styled } from '@mui/material'
-import { FC, useState } from 'react'
-import ReactQuill from 'react-quill'
+import { FormHelperText, styled } from '@mui/material'
+import { FC } from 'react'
+import ReactQuill, { ReactQuillProps } from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { StyledLabel } from 'src/theme/StyledComponents'
 
-interface RichTextProps {
+interface RichTextProps extends ReactQuillProps {
     label: string
+    value: string
+    onChange: () => void
+    error?: boolean
+    showHelperText?: boolean
+    helperText?: string
 }
 
-const RichTextField: FC<RichTextProps> = ({ label }) => {
-    const [value, setValue] = useState('')
+const RichTextField: FC<RichTextProps> = (props) => {
+    const { label, error, showHelperText = true, helperText, ...rest } = props
 
     return (
         <Root>
-            <StyledLabel shrink>{label}</StyledLabel>
-            <ReactQuill theme="snow" value={value} onChange={setValue} />
+            <StyledLabel error={error} shrink>
+                {label}
+            </StyledLabel>
+            <ReactQuill theme="snow" {...rest} className={error ? 'error' : ''} />
+            {(error || showHelperText) && <FormHelperText error>{!!helperText ? helperText : ' '}</FormHelperText>}
         </Root>
     )
 }
@@ -25,5 +33,8 @@ const Root = styled('div')(({ theme }) => ({
     my: 4,
     '& .ql-editor': {
         minHeight: 150,
+    },
+    '& .error': {
+        border: `1px solid ${theme.palette.error.main}`,
     },
 }))

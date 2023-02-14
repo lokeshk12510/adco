@@ -56,6 +56,7 @@ const StyledCard = styled(Paper, { shouldForwardProp: (props) => props !== 'stat
             borderRadius: 5,
             overflow: 'hidden',
             cursor: 'pointer',
+            boxShadow: 'none',
             '&:hover': {
                 boxShadow: theme.shadows[5],
             },
