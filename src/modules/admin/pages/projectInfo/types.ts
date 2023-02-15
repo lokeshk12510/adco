@@ -36,7 +36,7 @@ export type ProjectInfoFormValuesTypes = {
     contract_duration: string
     gross_contract: string
     reviewer_comments: string
-    files:any
+    files:File[]
     projectImage:string|null
 
 }
@@ -62,7 +62,7 @@ export const ProjectInfoFormValues ={
     original_contract_sum: '',
     contract_duration: '',
     reviewer_comments: '',
-    files:'',
+    files:[],
     projectImage:Images.ProjectImage,
     
 }

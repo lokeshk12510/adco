@@ -38,7 +38,10 @@ const Root = styled(Box)(({ theme }) => ({
     width: '100%',
     padding: theme.spacing(3.5),
     background: theme.palette.common.white,
-    boxShadow: theme.shadows[3],
+    boxShadow: theme.shadows[1],
     borderRadius: theme.spacing(2),
     minHeight: 120,
+    '&:hover': {
+        boxShadow: theme.shadows[7],
+    },
 }))

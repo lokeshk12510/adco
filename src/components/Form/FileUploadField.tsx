@@ -4,14 +4,22 @@ import { Box, Button, TextField } from '@mui/material'
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 interface FileUploaderProps {
-    onChange: (e: React.InputHTMLAttributes<HTMLInputElement>) => void
-    value: any
+    onChange: (e: File[]) => void
+    value: File[]
 }
 
 const FileUploader = ({ onChange, value, ...props }: FileUploaderProps) => {
     const handleChange = (e: any) => {
-        onChange(e)
+        console.log(e)
+        onChange(e.target.files)
     }
+
+    let val =
+        value.length > 0
+            ? Object.entries(value)
+                  .map(([index, file]) => file.name)
+                  .join(', ')
+            : ''
 
     return (
         <>
@@ -27,7 +35,7 @@ const FileUploader = ({ onChange, value, ...props }: FileUploaderProps) => {
                     '&:hover': { outline: `1px solid #000` },
                 }}
             >
-                <input type="file" name="excel" hidden onChange={handleChange} />
+                <input type="file" name="excel" hidden onChange={handleChange} multiple />
                 <TextField
                     sx={{
                         pointerEvents: 'none',
@@ -36,7 +44,7 @@ const FileUploader = ({ onChange, value, ...props }: FileUploaderProps) => {
                             padding: 1,
                         },
                     }}
-                    value={value || ''}
+                    value={val}
                     fullWidth
                     placeholder="No File selected"
                     InputProps={{

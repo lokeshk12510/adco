@@ -54,9 +54,8 @@ const CommentSection = ({ onFormSubmit, onFormCancel }: CommentSectionProps) => 
                     control={control}
                     name="files"
                     render={({ field: { onChange, value, onBlur } }) => {
-                        const handleOnChange = (val: any) => {
-                            console.log(val.target.value)
-                            onChange(val)
+                        const handleOnChange = (file: File[]) => {
+                            onChange(file)
                         }
 
                         return <FileUploader onChange={handleOnChange} value={value} />
