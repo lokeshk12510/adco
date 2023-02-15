@@ -1,5 +1,7 @@
-import { FormControl, FormHelperText, OutlinedInput, OutlinedInputProps, styled } from '@mui/material'
 import { FC } from 'react'
+// Mui
+import { FormControl, FormHelperText, OutlinedInput, OutlinedInputProps, styled } from '@mui/material'
+// Styled Components
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 interface InputFieldProps extends OutlinedInputProps {

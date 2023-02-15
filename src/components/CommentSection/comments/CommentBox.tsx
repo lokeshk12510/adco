@@ -1,6 +1,9 @@
-import { Delete } from '@mui/icons-material'
+// Mui
 import { Avatar, Box, IconButton, Stack, styled } from '@mui/material'
+// Icons
+import { Delete } from '@mui/icons-material'
 import Typography from '@mui/material/Typography'
+// Images
 import Images from 'src/config/images'
 
 const CommentBox = () => {

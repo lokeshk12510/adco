@@ -1,11 +1,17 @@
+import { useState } from 'react'
+// Icons
 import { CalendarMonthRounded } from '@mui/icons-material'
-import { FormControl, FormHelperText, OutlinedInput } from '@mui/material'
-import { styled } from '@mui/system'
+// Mui
+import { FormControl, FormHelperText, OutlinedInput, styled } from '@mui/material'
+// Date-picker
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import { DatePicker, DatePickerProps } from '@mui/x-date-pickers/DatePicker'
+// Momemt
 import moment from 'moment'
-import { useState } from 'react'
+// Constants
+import { DATE_FORMAT } from 'src/config/contants'
+// Styled components
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 type Props<TInputDate, TDate> = {
@@ -34,7 +40,7 @@ const DateField = <TInputDate, TDate = TInputDate>(props: Props<TInputDate, TDat
         showHelperText = true,
         helperText,
         onChange,
-        placeholder = 'DD MMM YYYY',
+        placeholder = DATE_FORMAT,
         ...restProps
     } = props
 
@@ -66,7 +72,7 @@ const DateField = <TInputDate, TDate = TInputDate>(props: Props<TInputDate, TDat
 
                 <DatePicker
                     open={open}
-                    inputFormat="DD MMM YYYY"
+                    inputFormat={DATE_FORMAT}
                     onOpen={handleOpen}
                     closeOnSelect
                     onClose={handleClickAway}

@@ -40,14 +40,15 @@ const Palette = (mode: PaletteMode, themeColor: ThemeColor) => {
         mode: mode,
         primary: {
             light: '#E3EEFF',
-            main: '#0047BA',
-            dark: '#0047BA',
+            main: '#0047BB',
+            dark: '#0047BB',
             contrastText: '#FFF',
         },
         secondary: {
-            light: '#2A3041',
-            main: '#2A3041',
-            dark: '#2A3041',
+            light: '#273666',
+            main: '#293454',
+            // main: '#2A3041',
+            dark: '#192446',
             contrastText: '#FFF',
         },
         success: {

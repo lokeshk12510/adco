@@ -1,7 +1,10 @@
-import { FormHelperText, styled } from '@mui/material'
 import { FC } from 'react'
+// Mui
+import { FormHelperText, styled } from '@mui/material'
+// React-quill
 import ReactQuill, { ReactQuillProps } from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+// Styled Components
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 interface RichTextProps extends ReactQuillProps {

@@ -1,8 +1,13 @@
+// Mui
 import Typography from '@mui/material/Typography'
+// RHF
 import { FormProvider, useForm } from 'react-hook-form'
+// Components
 import CommentSection from 'src/components/CommentSection/Index'
-import { StyledBox } from 'src/theme/StyledComponents'
 import ProjectInfoForm from './Form'
+// Styled-components
+import { StyledBox } from 'src/theme/StyledComponents'
+// Types
 import { ProjectInfoFormValues, ProjectInfoFormValuesTypes } from './types'
 
 const ProjectInfo = () => {

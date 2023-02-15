@@ -1,20 +1,21 @@
+import * as React from 'react'
+// Mui
 import { Divider } from '@mui/material'
 import Button from '@mui/material/Button'
 import MuiDialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
-import * as React from 'react'
 
 interface DialogProps {
     open: boolean
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
     title: string
     children: React.ReactNode
-    onSubmit?: () => void
-    onCancel?: () => void
     submitLabel?: string
     cancelLabel?: string
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    onSubmit?: () => void
+    onCancel?: () => void
 }
 
 export default function Dialog(props: DialogProps) {

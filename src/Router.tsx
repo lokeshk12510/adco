@@ -2,13 +2,14 @@
 import { RouteObject } from 'react-router'
 import { Navigate } from 'react-router-dom'
 // Layouts
-// Pages
 import AdminLayout from './modules/admin/layouts/adminLayout/Index'
+// Pages
 import Home from './modules/admin/pages/home/Index'
 import ProjectInfo from './modules/admin/pages/projectInfo/Index'
 import Error from './modules/admin/pages/status/Error'
 import TrafficLight from './modules/admin/pages/trafficLight/Index'
 
+// Urls config
 export const urls = {
     home: '/',
     trafficLight: '/traffic-light',
@@ -16,6 +17,7 @@ export const urls = {
     404: '/404',
 }
 
+// Router config
 const routes: RouteObject[] = [
     {
         path: '',

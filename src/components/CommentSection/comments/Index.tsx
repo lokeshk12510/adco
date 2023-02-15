@@ -1,4 +1,6 @@
+// Mui
 import { Box, Stack, styled } from '@mui/material'
+// Components
 import CommentBox from './CommentBox'
 
 const Comments = () => {

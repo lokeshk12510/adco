@@ -5,8 +5,7 @@ import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 // Component
 import App from './App'
-// Style
-import './index.css'
+// Theme
 import ThemeWrapper from './theme/ThemeProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

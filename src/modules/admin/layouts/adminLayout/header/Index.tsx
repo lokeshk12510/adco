@@ -1,17 +1,25 @@
+import * as React from 'react'
+// Mui
+import {
+    AppBar,
+    Avatar,
+    Box,
+    IconButton,
+    InputAdornment,
+    Menu,
+    MenuItem,
+    TextField,
+    Toolbar,
+    Typography,
+    useScrollTrigger,
+} from '@mui/material'
+// Icons
 import { Search } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
 import SortIcon from '@mui/icons-material/Sort'
-import { InputAdornment, TextField, useScrollTrigger } from '@mui/material'
-import AppBar from '@mui/material/AppBar'
-import Avatar from '@mui/material/Avatar'
-import Box from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import * as React from 'react'
+// Router
 import { useLocation } from 'react-router-dom'
+// Images
 import Images from 'src/config/images'
 
 interface HeaderProps {
@@ -19,6 +27,7 @@ interface HeaderProps {
     handleSidebarToggle: () => void
 }
 
+// Func to render header based on current route
 const renderHeaderContent = (page: string) => {
     if (page === '/') {
         return 'Active PCR Projects'

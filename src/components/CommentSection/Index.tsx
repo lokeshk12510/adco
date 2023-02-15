@@ -1,16 +1,14 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { Button, Grid, Stack } from '@mui/material'
 import { useState } from 'react'
+// Icons
+import { Visibility, VisibilityOff } from '@mui/icons-material'
+// Mui
+import { Button, Grid, Stack } from '@mui/material'
+// RHF
 import { Controller, useFormContext } from 'react-hook-form'
+// Components
 import FileUploader from '../Form/FileUploadField'
 import RichTextField from '../Form/RichTextField'
 import Comments from './comments/Index'
-
-// type CommentSectionProps<TFormValues extends FieldValues> = {
-//     methods: UseFormReturn<TFormValues, any>
-//     onFormSubmit: (data: any) => void
-//     onFormCancel: () => void
-// }
 
 type CommentSectionProps = {
     onFormSubmit: (data: any) => void

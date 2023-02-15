@@ -1,10 +1,16 @@
+import { useEffect, useState } from 'react'
+// Icons
 import { AddCircle, Edit } from '@mui/icons-material'
+// Mui
 import { Box, Grid, IconButton, Stack, Typography, alpha, styled } from '@mui/material'
 import Paper from '@mui/material/Paper'
+// Moment
 import moment from 'moment'
-import { useEffect, useState } from 'react'
+// Components
 import Dialog from 'src/components/Dialog'
 import DateField from 'src/components/Form/DateField'
+// Constants
+import { DATE_FORMAT } from 'src/config/contants'
 interface StyledCardProps {
     status: boolean
 }
@@ -84,7 +90,7 @@ const Review = () => {
                                 <div className="content">
                                     <>
                                         {item.title} <br />{' '}
-                                        {item.status ? moment(item.approved_date).format('Do MMM YYYY') : '-'}{' '}
+                                        {item.status ? moment(item.approved_date).format(DATE_FORMAT) : '-'}{' '}
                                     </>
                                     <IconButton color="primary" size="small">
                                         {item.status ? <Edit /> : <AddCircle />}

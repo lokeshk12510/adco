@@ -1,7 +1,8 @@
+import { FC } from 'react'
+// Mui
 import { Stack } from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { FC } from 'react'
 
 interface Colors {
     width: string

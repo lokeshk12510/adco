@@ -1,11 +1,14 @@
-import { styled } from '@mui/material'
 import { FC, ReactNode, useCallback, useState } from 'react'
+// Mui
+import { styled } from '@mui/material'
+// Router
 import { Outlet } from 'react-router-dom'
+// Components
 import Footer from './footer/Index'
 import Header from './header/Index'
 import Sidebar from './sidebar/Index'
 
-// Sidebar Config
+// Layout Config
 export const SIDEBAR_MAX_WIDTH = 260
 export const SIDEBAR_MIN_WIDTH = 120
 

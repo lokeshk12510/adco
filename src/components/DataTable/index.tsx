@@ -1,6 +1,9 @@
-import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import { FC } from 'react'
+// Mui
+import { DataGrid, GridColDef } from '@mui/x-data-grid'
+// Icons
+import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
+// Components
 import CustomNoRowsOverlay from './CustomNoRowsOverlay'
 import GridFooterRow from './GridFooterRow'
 

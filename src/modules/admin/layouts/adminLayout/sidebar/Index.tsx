@@ -1,15 +1,21 @@
+import { FC, useEffect, useState } from 'react'
+// Mui
 import { Drawer, styled } from '@mui/material'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
-import { FC, useEffect, useState } from 'react'
+// Router
 import { Link, useLocation } from 'react-router-dom'
 import { urls } from 'src/Router'
+// Icons
 import { ActiveProjectIcon, OverviewIcon } from 'src/config/icons'
+// Images
 import Images from 'src/config/images'
+// Hooks
 import useResponsive from 'src/hooks/useResponsive'
+// Config
 import { SIDEBAR_MAX_WIDTH, SIDEBAR_MIN_WIDTH } from '../Index'
 
 interface SidebarProps {
@@ -101,6 +107,7 @@ const Root = styled(Drawer, {
         background: theme.palette.secondary.main,
         position: 'fixed',
         width: isSidebarOpen ? SIDEBAR_MAX_WIDTH : SIDEBAR_MIN_WIDTH,
+        boxShadow: theme.shadows[2],
         minHeight: '100vh',
         // width: 'inherit',
         borderRight: 'none',
@@ -131,15 +138,15 @@ const StyledListWrapper = styled(List, {
     shouldForwardProp: (prop) => prop !== 'isSidebarOpen',
 })<StyleRootProps>(({ theme, isSidebarOpen }) => ({
     paddingBlock: 0,
-    backgroundColor: theme.palette.secondary.main,
+    // backgroundColor: theme.palette.secondary.main,
     '& .MuiListSubheader-root': {
-        background: theme.palette.secondary.main,
+        background: 'transparent',
         color: theme.palette.common.white,
         textTransform: 'uppercase',
         display: isSidebarOpen ? 'block' : 'none',
     },
     '& .MuiListItemButton-root': {
-        paddingBlock: theme.spacing(2),
+        paddingBlock: theme.spacing(3),
 
         paddingInline: theme.spacing(3),
         justifyContent: isSidebarOpen ? 'flex-start' : 'center',
@@ -147,9 +154,13 @@ const StyledListWrapper = styled(List, {
         '& .MuiListItemIcon-root,.MuiListItemText-root': {
             color: theme.palette.grey[500],
         },
+        '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+        },
 
         '&.Mui-selected': {
             fontWeight: '500',
+            backgroundColor: theme.palette.secondary.dark,
             color: theme.palette.common.white,
             '& .MuiListItemIcon-root,.MuiListItemText-root': {
                 color: theme.palette.common.white,

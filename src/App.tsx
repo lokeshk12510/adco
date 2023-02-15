@@ -1,12 +1,10 @@
-import './App.css'
-import routes from './Router'
-
+// Router
 import { useRoutes } from 'react-router-dom'
+import routes from './Router'
 
 function App() {
     const content = useRoutes(routes)
-
-    return <div className="App">{content}</div>
+    return <div>{content}</div>
 }
 
 export default App

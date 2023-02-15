@@ -1,5 +1,6 @@
-import { Box, Typography, styled } from '@mui/material'
 import React, { FC } from 'react'
+// Mui
+import { Box, Typography, styled } from '@mui/material'
 
 interface ImageUploaderProps {
     value: string | null
@@ -15,7 +16,6 @@ const ImageUploader: FC<ImageUploaderProps> = (props) => {
     const handleChange = async (event: React.ChangeEvent<HTMLInputElement>): Promise<any> => {
         if (event?.target?.files) {
             const fileLoaded = URL.createObjectURL(event.target.files[0])
-
             onChange(fileLoaded)
         } else {
             onChange(value)
