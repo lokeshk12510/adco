@@ -32,7 +32,7 @@ const AdminLayout: FC<AdminLayoutProps> = () => {
     return (
         <Root>
             <Sidebar isSidebarOpen={isSidebarOpen} handleSidebarToggle={handleSidebarToggle} />
-            <BodyContainer className="shrink" isSidebarOpen={isSidebarOpen}>
+            <BodyContainer isSidebarOpen={isSidebarOpen}>
                 <Header handleSidebarToggle={handleSidebarToggle} isSidebarOpen={isSidebarOpen} />
                 <Wrapper>
                     <Outlet />

@@ -4,19 +4,20 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 // Mui
 import { Button, Grid, Stack } from '@mui/material'
 // RHF
-import { Controller, useFormContext } from 'react-hook-form'
+import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 // Components
 import FileUploader from '../Form/FileUploadField'
 import RichTextField from '../Form/RichTextField'
 import Comments from './comments/Index'
 
-type CommentSectionProps = {
+type CommentSectionProps<TFieldValues extends FieldValues = FieldValues> = {
     onFormSubmit: (data: any) => void
     onFormCancel: () => void
+    methods: UseFormReturn<TFieldValues>
 }
 
-const CommentSection = ({ onFormSubmit, onFormCancel }: CommentSectionProps) => {
-    const methods = useFormContext()
+const CommentSection = ({ onFormSubmit, onFormCancel, methods }: CommentSectionProps) => {
+    // const methods = useFormContext()
 
     const [view, setView] = useState<boolean>(false)
 

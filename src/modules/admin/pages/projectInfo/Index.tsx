@@ -1,7 +1,7 @@
 // Mui
 import Typography from '@mui/material/Typography'
 // RHF
-import { FormProvider, useForm } from 'react-hook-form'
+import { FieldValues, FormProvider, useForm } from 'react-hook-form'
 // Components
 import CommentSection from 'src/components/CommentSection/Index'
 import ProjectInfoForm from './Form'
@@ -11,7 +11,7 @@ import { StyledBox } from 'src/theme/StyledComponents'
 import { ProjectInfoFormValues, ProjectInfoFormValuesTypes } from './types'
 
 const ProjectInfo = () => {
-    const methods = useForm<ProjectInfoFormValuesTypes>({
+    const methods = useForm<FieldValues>({
         defaultValues: ProjectInfoFormValues,
     })
 
@@ -27,7 +27,11 @@ const ProjectInfo = () => {
 
             <FormProvider {...methods}>
                 <ProjectInfoForm />
-                <CommentSection onFormCancel={() => console.log('cancel')} onFormSubmit={handleOnSubmit} />
+                <CommentSection
+                    onFormCancel={() => console.log('cancel')}
+                    onFormSubmit={handleOnSubmit}
+                    methods={methods}
+                />
             </FormProvider>
         </StyledBox>
     )
