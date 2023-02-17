@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 // Layouts
 import AdminLayout from './modules/admin/layouts/adminLayout/Index'
 // Pages
+import HSE from './modules/admin/pages/HSE/Index'
 import Home from './modules/admin/pages/home/Index'
 import ProjectInfo from './modules/admin/pages/projectInfo/Index'
 import Error from './modules/admin/pages/status/Error'
@@ -14,6 +15,7 @@ export const urls = {
     home: '/',
     trafficLight: '/traffic-light',
     projectInfo: '/project/edit-information',
+    hse: '/hse',
     404: '/404',
 }
 
@@ -43,6 +45,10 @@ const routes: RouteObject[] = [
                         element: <ProjectInfo />,
                     },
                 ],
+            },
+            {
+                path: urls.hse,
+                element: <HSE />,
             },
             {
                 path: urls[404],

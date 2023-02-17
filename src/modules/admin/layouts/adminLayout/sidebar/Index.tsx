@@ -10,7 +10,7 @@ import ListSubheader from '@mui/material/ListSubheader'
 import { Link, useLocation } from 'react-router-dom'
 import { urls } from 'src/Router'
 // Icons
-import { ActiveProjectIcon, OverviewIcon } from 'src/config/icons'
+import { ActiveProjectIcon, HSEIcon, OverviewIcon } from 'src/config/icons'
 // Images
 import Images from 'src/config/images'
 // Hooks
@@ -54,7 +54,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
         }
     })
 
-    const showOthersMenu = location.pathname.includes('/project')
+    const homePage = location.pathname === '/'
 
     return (
         <Root isSidebarOpen={isSidebarOpen} variant={isPermanent ? 'permanent' : 'temporary'}>
@@ -78,7 +78,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
                         </ListItemIcon>
                         <ListItemText primary="Active project" />
                     </ListItemButton>
-                    {showOthersMenu && (
+                    {!homePage && (
                         <>
                             <ListItemButton
                                 component={Link}
@@ -89,6 +89,16 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
                                     <OverviewIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Overview" />
+                            </ListItemButton>
+                            <ListItemButton
+                                component={Link}
+                                to={urls.hse}
+                                selected={location.pathname === urls.hse && true}
+                            >
+                                <ListItemIcon>
+                                    <HSEIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="HSE" />
                             </ListItemButton>
                         </>
                     )}
