@@ -1,6 +1,7 @@
 import { InputLabel, styled } from '@mui/material'
 import Box from '@mui/material/Box'
 import { DataGrid } from '@mui/x-data-grid'
+import TableContainer from '@mui/material/TableContainer'
 
 export const StyledBox = styled(Box)(({ theme }) => ({
     width: '100%',
@@ -70,4 +71,46 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 
 export const StyledLabel = styled(InputLabel)(({ theme }) => ({
     color: theme.palette.common.black,
+}))
+
+export const ChartTable = styled(TableContainer)(({ theme }) => ({
+    '& .MuiTable-root': {
+        borderCollapse: 'separate',
+        borderSpacing: '0 5px',
+    },
+    '& .MuiTableCell-head': {
+        whiteSpace: 'nowrap',
+        textTransform: 'uppercase',
+        paddingInline: 3,
+        paddingBlock: 5,
+        ...{ ...theme.typography.overline, fontWeight: 'bold' },
+    },
+    '& .MuiTableBody-root': {
+        '& .MuiTableRow-root': {
+            background: theme.palette.grey[100],
+            '& .MuiTableCell-body': {
+                borderTop: `1px solid ${theme.palette.grey[400]}`,
+                borderBottom: `1px solid ${theme.palette.grey[400]}`,
+                '&:first-of-type': {
+                    borderLeft: `1px solid ${theme.palette.grey[400]}`,
+                },
+                '&:last-of-type': {
+                    borderRight: `1px solid ${theme.palette.grey[400]}`,
+                },
+            },
+            '&.highlight': {
+                background: theme.palette.primary.light,
+                '& .MuiTableCell-body': {
+                    borderTop: `1px solid ${theme.palette.primary.main}`,
+                    borderBottom: `1px solid ${theme.palette.primary.main}`,
+                    '&:first-of-type': {
+                        borderLeft: `1px solid ${theme.palette.primary.main}`,
+                    },
+                    '&:last-of-type': {
+                        borderRight: `1px solid ${theme.palette.primary.main}`,
+                    },
+                },
+            },
+        },
+    },
 }))

@@ -2,7 +2,7 @@ import { useState } from 'react'
 // Icons
 import { CalendarMonthRounded } from '@mui/icons-material'
 // Mui
-import { FormControl, FormHelperText, OutlinedInput, styled } from '@mui/material'
+import { FormControl, FormHelperText, OutlinedInput, SxProps, styled } from '@mui/material'
 // Date-picker
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
@@ -23,6 +23,7 @@ type Props<TInputDate, TDate> = {
     helperText?: string
     placeholder?: string
     onChange: (val: Date | null) => void
+    sx?: SxProps
     // sx:SxProps
 } & Omit<DatePickerProps<TInputDate, TDate>, 'renderInput'>
 
@@ -41,6 +42,7 @@ const DateField = <TInputDate, TDate = TInputDate>(props: Props<TInputDate, TDat
         helperText,
         onChange,
         placeholder = DATE_FORMAT,
+        sx,
         ...restProps
     } = props
 
@@ -63,6 +65,7 @@ const DateField = <TInputDate, TDate = TInputDate>(props: Props<TInputDate, TDat
                 disabled={disabled}
                 hasLabel={Boolean(label)}
                 size="small"
+                sx={sx}
             >
                 {label && (
                     <StyledLabel error={error} shrink htmlFor={label}>

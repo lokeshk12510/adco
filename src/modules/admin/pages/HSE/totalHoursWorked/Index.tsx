@@ -1,17 +1,11 @@
-import {
-    Box,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Typography,
-    styled,
-} from '@mui/material'
 import { useState } from 'react'
+// Mui
+import { Box, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material'
+// Components
 import DoughnutChart from 'src/components/charts/DoughnutChart'
-import { StyledBox } from 'src/theme/StyledComponents'
+// Styled-components
+import { ChartTable, StyledBox } from 'src/theme/StyledComponents'
+// data
 import { DoughnutDataProps, doughnutData } from './data'
 
 const DoughnutSection = () => {
@@ -85,45 +79,3 @@ const DoughnutSection = () => {
 }
 
 export default DoughnutSection
-
-const ChartTable = styled(TableContainer)(({ theme }) => ({
-    '& .MuiTable-root': {
-        borderCollapse: 'separate',
-        borderSpacing: '0 5px',
-    },
-    '& .MuiTableCell-head': {
-        whiteSpace: 'nowrap',
-        textTransform: 'uppercase',
-        paddingInline: 3,
-        paddingBlock: 5,
-        ...{ ...theme.typography.overline, fontWeight: 'bold' },
-    },
-    '& .MuiTableBody-root': {
-        '& .MuiTableRow-root': {
-            background: theme.palette.grey[200],
-            '& .MuiTableCell-body': {
-                borderTop: `1px solid ${theme.palette.grey[400]}`,
-                borderBottom: `1px solid ${theme.palette.grey[400]}`,
-                '&:first-of-type': {
-                    borderLeft: `1px solid ${theme.palette.grey[400]}`,
-                },
-                '&:last-of-type': {
-                    borderRight: `1px solid ${theme.palette.grey[400]}`,
-                },
-            },
-            '&.highlight': {
-                background: theme.palette.primary.light,
-                '& .MuiTableCell-body': {
-                    borderTop: `1px solid ${theme.palette.primary.main}`,
-                    borderBottom: `1px solid ${theme.palette.primary.main}`,
-                    '&:first-of-type': {
-                        borderLeft: `1px solid ${theme.palette.primary.main}`,
-                    },
-                    '&:last-of-type': {
-                        borderRight: `1px solid ${theme.palette.primary.main}`,
-                    },
-                },
-            },
-        },
-    },
-}))

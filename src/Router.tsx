@@ -15,7 +15,7 @@ export const urls = {
     home: '/',
     trafficLight: '/traffic-light',
     projectInfo: '/project/edit-information',
-    hse: '/hse',
+    hse: '/project/hse',
     404: '/404',
 }
 
@@ -44,12 +44,13 @@ const routes: RouteObject[] = [
                         path: urls.projectInfo,
                         element: <ProjectInfo />,
                     },
+                    {
+                        path: urls.hse,
+                        element: <HSE />,
+                    },
                 ],
             },
-            {
-                path: urls.hse,
-                element: <HSE />,
-            },
+
             {
                 path: urls[404],
                 element: <Error />,

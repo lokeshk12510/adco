@@ -1,7 +1,12 @@
+// Mui
 import { Grid, Typography } from '@mui/material'
+// Styled Components
 import { StyledBox } from 'src/theme/StyledComponents'
-import AverageWorkersOnSite from './AverageWorkersOnSite/Index'
-import DoughnutSection from './DoughnutSection/Index'
+// Components
+import AverageWorkersOnSite from './averageWorkersOnSite/Index'
+import DoughnutSection from './totalHoursWorked/Index'
+import IncidentsInjuries from './incidentsInjuries/Index'
+import RegulatoryNotice from './regulatoryNotice/Index'
 
 const HSE = () => {
     return (
@@ -15,6 +20,12 @@ const HSE = () => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <AverageWorkersOnSite />
+                </Grid>
+                <Grid item xs={12}>
+                    <IncidentsInjuries />
+                </Grid>
+                <Grid item xs={12}>
+                    <RegulatoryNotice />
                 </Grid>
             </Grid>
         </StyledBox>

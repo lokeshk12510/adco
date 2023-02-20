@@ -1,5 +1,6 @@
 import {
     CategoryScale,
+    ChartData,
     Chart as ChartJS,
     Filler,
     Legend,
@@ -8,10 +9,11 @@ import {
     PointElement,
     Title,
     Tooltip,
+    Colors,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler)
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, Colors)
 
 export const options = {
     responsive: true,
@@ -24,53 +26,17 @@ export const options = {
         title: {
             display: false,
         },
+        colors: {
+            enabled: true,
+            // forceOverride: true,
+        },
     },
 }
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-]
-
-export const data = {
-    labels,
-    datasets: [
-        {
-            fill: true,
-            label: 'Dataset 1',
-            data: [
-                100, 123, 314, 615, 214, 1134, 314, 714, 765, 546, 234, 234, 674, 12, 123, 123, 12, 31, 23, 123, 131,
-                23, 1, 31, 23, 12, 31, 23, 1, 3, 123, 1, 31, 23, 1, 23, 12, 31, 23, 1, 23, 1, 23, 123, 1, 3, 12, 31, 23,
-                1, 2, 31, 23, 12, 3, 123, 1, 3,
-            ],
-            borderColor: '#82B34E',
-            backgroundColor: '#82B34E33',
-            tension: 0.3,
-            xAxes: [
-                {
-                    type: 'time',
-                    position: 'bottom',
-                    time: {
-                        displayFormats: { day: 'MM/YY' },
-                        tooltipFormat: 'DD/MM/YY',
-                        unit: 'month',
-                    },
-                },
-            ],
-        },
-    ],
+type LineProps = {
+    data: ChartData<'line', number[], unknown>
 }
 
-export function LineChart() {
+export function LineChart({ data }: LineProps) {
     return <Line options={options} data={data} />
 }

@@ -8,6 +8,7 @@ import {
     InputAdornment,
     Menu,
     MenuItem,
+    Stack,
     TextField,
     Toolbar,
     Typography,
@@ -17,10 +18,13 @@ import {
 import { Search } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
 import SortIcon from '@mui/icons-material/Sort'
+import { ExcelIcon } from 'src/config/icons'
 // Router
 import { useLocation } from 'react-router-dom'
 // Images
 import Images from 'src/config/images'
+// Components
+import DateField from 'src/components/Form/DateField'
 
 interface HeaderProps {
     isSidebarOpen: boolean
@@ -50,6 +54,7 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
     }
 
     const location = useLocation()
+    const homePage = location.pathname === '/'
 
     // MUi Scroll event hook
     const trigger = useScrollTrigger({
@@ -111,32 +116,47 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
 
                 <Box
                     sx={{
-                        display: { xs: 'none', md: 'flex' },
+                        // display: { xs: 'none', md: 'flex' },
+                        display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: '10px',
                     }}
                 >
-                    <TextField
-                        fullWidth
-                        placeholder="Search project"
-                        size="small"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <Search />
-                                </InputAdornment>
-                            ),
-                        }}
-                        sx={{
-                            display: { sm: 'none', md: 'block' },
-                            minWidth: { md: '200px', lg: '350px' },
-                            '& .MuiOutlinedInput-root': {
-                                borderRadius: '20px',
-                            },
-                        }}
-                    />
-
+                    {homePage ? (
+                        <TextField
+                            fullWidth
+                            placeholder="Search project"
+                            size="small"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <Search />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            sx={{
+                                display: { sm: 'none', md: 'block' },
+                                minWidth: { md: '200px', lg: '350px' },
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: '20px',
+                                },
+                            }}
+                        />
+                    ) : (
+                        <Stack direction={'row'} alignItems="center" justifyContent={'flex-end'} spacing={3}>
+                            <DateField
+                                value={null}
+                                onChange={(e) => console.log(e)}
+                                name="date"
+                                showHelperText={false}
+                                sx={{ width: 200 }}
+                            />
+                            <IconButton>
+                                <ExcelIcon />
+                            </IconButton>
+                        </Stack>
+                    )}
                     <Avatar
                         alt="logo"
                         src={Images.ProfileImg}
