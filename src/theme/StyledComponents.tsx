@@ -1,4 +1,4 @@
-import { InputLabel, styled } from '@mui/material'
+import { InputLabel, colors, styled } from '@mui/material'
 import Box from '@mui/material/Box'
 import { DataGrid } from '@mui/x-data-grid'
 import TableContainer from '@mui/material/TableContainer'
@@ -89,13 +89,17 @@ export const ChartTable = styled(TableContainer)(({ theme }) => ({
         '& .MuiTableRow-root': {
             background: theme.palette.grey[100],
             '& .MuiTableCell-body': {
-                borderTop: `1px solid ${theme.palette.grey[400]}`,
-                borderBottom: `1px solid ${theme.palette.grey[400]}`,
+                borderTop: `1px solid ${theme.palette.grey[300]}`,
+                borderBottom: `1px solid ${theme.palette.grey[300]}`,
                 '&:first-of-type': {
-                    borderLeft: `1px solid ${theme.palette.grey[400]}`,
+                    borderLeft: `1px solid ${theme.palette.grey[300]}`,
+                    borderTopLeftRadius: 5,
+                    borderBottomLeftRadius: 5,
                 },
                 '&:last-of-type': {
-                    borderRight: `1px solid ${theme.palette.grey[400]}`,
+                    borderRight: `1px solid ${theme.palette.grey[300]}`,
+                    borderTopRightRadius: 5,
+                    borderBottomRightRadius: 5,
                 },
             },
             '&.highlight': {
@@ -112,5 +116,67 @@ export const ChartTable = styled(TableContainer)(({ theme }) => ({
                 },
             },
         },
+    },
+}))
+
+export const WidgetBox = styled(Box)(({ theme }) => ({
+    '& header': {
+        background: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText,
+        padding: theme.spacing(3),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        textTransform: 'uppercase',
+        flexWrap: 'wrap',
+        rowGap: 15,
+    },
+    '& nav': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 10,
+        flexWrap: 'wrap',
+        '& .legend': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            gap: 10,
+            flex: 1,
+            '& span': {
+                width: 20,
+                height: 14,
+                display: 'block',
+                borderRadius: theme.spacing(0.3),
+            },
+            '& p': {
+                whiteSpace: 'nowrap',
+            },
+        },
+    },
+    '& section': {
+        padding: theme.spacing(2),
+        background: theme.palette.common.white,
+    },
+    '& li': {
+        padding: theme.spacing(3),
+        background: theme.palette.common.white,
+        borderRadius: theme.spacing(1.3),
+        border: `1px solid ${theme.palette.grey[300]}`,
+        listStyle: 'none',
+        textAlign: 'center',
+        whiteSpace: 'nowrap',
+    },
+    '& .sp1': {
+        background: colors.green[100],
+    },
+    '& .sp2': {
+        background: colors.orange[100],
+    },
+    '& .sp3': {
+        background: colors.yellow[100],
+    },
+    '& .sp4': {
+        background: colors.pink[100],
     },
 }))

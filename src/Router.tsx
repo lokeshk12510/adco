@@ -9,6 +9,7 @@ import Home from './modules/admin/pages/home/Index'
 import ProjectInfo from './modules/admin/pages/projectInfo/Index'
 import Error from './modules/admin/pages/status/Error'
 import TrafficLight from './modules/admin/pages/trafficLight/Index'
+import Programme from './modules/admin/pages/programme/Index'
 
 // Urls config
 export const urls = {
@@ -16,6 +17,7 @@ export const urls = {
     trafficLight: '/traffic-light',
     projectInfo: '/project/edit-information',
     hse: '/project/hse',
+    programme: '/project/programme',
     404: '/404',
 }
 
@@ -47,6 +49,10 @@ const routes: RouteObject[] = [
                     {
                         path: urls.hse,
                         element: <HSE />,
+                    },
+                    {
+                        path: urls.programme,
+                        element: <Programme />,
                     },
                 ],
             },

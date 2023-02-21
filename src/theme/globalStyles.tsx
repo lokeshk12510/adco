@@ -15,7 +15,7 @@ const GlobalStyles = (theme: Theme) => {
         body: {
             width: '100%',
             height: 'auto',
-            // color: palette.grey[700],
+            color: theme.palette.grey[800],
             // backgroundColor: palette.background.default,
         },
         '#root': {

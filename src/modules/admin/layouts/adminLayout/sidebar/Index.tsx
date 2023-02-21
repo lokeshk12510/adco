@@ -10,7 +10,7 @@ import ListSubheader from '@mui/material/ListSubheader'
 import { Link, useLocation } from 'react-router-dom'
 import { urls } from 'src/Router'
 // Icons
-import { ActiveProjectIcon, HSEIcon, OverviewIcon } from 'src/config/icons'
+import { ActiveProjectIcon, HSEIcon, OverviewIcon, ProgrammeIcon } from 'src/config/icons'
 // Images
 import Images from 'src/config/images'
 // Hooks
@@ -99,6 +99,16 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
                                     <HSEIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="HSE" />
+                            </ListItemButton>
+                            <ListItemButton
+                                component={Link}
+                                to={urls.programme}
+                                selected={location.pathname === urls.programme && true}
+                            >
+                                <ListItemIcon>
+                                    <ProgrammeIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Programme" />
                             </ListItemButton>
                         </>
                     )}

@@ -24,7 +24,7 @@ import { useLocation } from 'react-router-dom'
 // Images
 import Images from 'src/config/images'
 // Components
-import DateField from 'src/components/Form/DateField'
+import AutoComplete from 'src/components/Form/AutoComplete'
 
 interface HeaderProps {
     isSidebarOpen: boolean
@@ -145,10 +145,11 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
                         />
                     ) : (
                         <Stack direction={'row'} alignItems="center" justifyContent={'flex-end'} spacing={3}>
-                            <DateField
-                                value={null}
+                            <AutoComplete
+                                value={{ title: 'Feb 21', value: 1 }}
+                                options={[{ title: 'Feb 21', value: 1 }]}
                                 onChange={(e) => console.log(e)}
-                                name="date"
+                                name="search"
                                 showHelperText={false}
                                 sx={{ width: 200 }}
                             />

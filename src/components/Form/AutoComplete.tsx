@@ -1,17 +1,17 @@
 // Mui
-import { FormControl, FormHelperText, Autocomplete as MuiAutoComplete, TextField, styled } from '@mui/material'
+import { FormControl, FormHelperText, Autocomplete as MuiAutoComplete, SxProps, TextField, styled } from '@mui/material'
 // Styled components
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 type OptionsValues = {
     title: string
-    value: string
+    value: string | number
 }
 
 type Props = {
     name?: string
     label?: string
-    value: OptionsValues
+    value: OptionsValues | null
     options: object[]
     error?: boolean
     showHelperText?: boolean
@@ -20,6 +20,7 @@ type Props = {
     disabled?: boolean
     placeholder?: string
     onChange: (val: any) => void
+    sx?: SxProps
 }
 
 interface FormControlStyleProps {
@@ -36,11 +37,12 @@ const AutoComplete = (props: Props) => {
         disabled,
         onChange,
         placeholder,
+        sx,
         ...reset
     } = props
 
     return (
-        <Root hasLabel={Boolean(label)} fullWidth={fullWidth} disabled={disabled}>
+        <Root hasLabel={Boolean(label)} fullWidth={fullWidth} disabled={disabled} sx={sx}>
             {label && (
                 <StyledLabel error={error} shrink htmlFor={label}>
                     {label}
