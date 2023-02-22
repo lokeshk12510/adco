@@ -10,6 +10,7 @@ import ProjectInfo from './modules/admin/pages/projectInfo/Index'
 import Error from './modules/admin/pages/status/Error'
 import TrafficLight from './modules/admin/pages/trafficLight/Index'
 import Programme from './modules/admin/pages/programme/Index'
+import General from './modules/admin/pages/general/Index'
 
 // Urls config
 export const urls = {
@@ -18,6 +19,7 @@ export const urls = {
     projectInfo: '/project/edit-information',
     hse: '/project/hse',
     programme: '/project/programme',
+    general: '/project/general',
     404: '/404',
 }
 
@@ -53,6 +55,10 @@ const routes: RouteObject[] = [
                     {
                         path: urls.programme,
                         element: <Programme />,
+                    },
+                    {
+                        path: urls.general,
+                        element: <General />,
                     },
                 ],
             },

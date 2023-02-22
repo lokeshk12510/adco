@@ -17,6 +17,7 @@ import Images from 'src/config/images'
 import useResponsive from 'src/hooks/useResponsive'
 // Config
 import { SIDEBAR_MAX_WIDTH, SIDEBAR_MIN_WIDTH } from '../Index'
+import { GeneralIcon } from '../../../../../config/icons'
 
 interface SidebarProps {
     isSidebarOpen: boolean
@@ -109,6 +110,16 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
                                     <ProgrammeIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Programme" />
+                            </ListItemButton>
+                            <ListItemButton
+                                component={Link}
+                                to={urls.general}
+                                selected={location.pathname === urls.general && true}
+                            >
+                                <ListItemIcon>
+                                    <GeneralIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="General" />
                             </ListItemButton>
                         </>
                     )}
