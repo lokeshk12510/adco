@@ -25,7 +25,7 @@ const NoticeChart = () => {
     }
 
     return (
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ p: 2, height: 450 }}>
             <BarChart data={data} chartOptions={options} />
         </Box>
     )
@@ -35,7 +35,8 @@ export default NoticeChart
 
 const options = {
     responsive: true,
-    aspectRatio: 1.7 / 1,
+    // aspectRatio: 1.7 / 1,
+    maintainAspectRatio: false,
     plugins: {
         legend: {
             position: 'bottom' as const,

@@ -44,7 +44,7 @@ const GaugeWidget = (props: GaugeWidgetProps) => {
         ],
     }
     return (
-        <Box sx={(theme) => ({ background: theme.palette.grey[100], p: 4 })}>
+        <Box className="rowStyle">
             <Typography variant="subtitle1" fontWeight={'semi-bold'} mb={3} textTransform={'uppercase'}>
                 {title}
             </Typography>

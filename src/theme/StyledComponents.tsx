@@ -179,4 +179,11 @@ export const WidgetBox = styled(Box)(({ theme }) => ({
     '& .sp4': {
         background: colors.pink[100],
     },
+
+    '& .rowStyle': {
+        background: theme.palette.grey[100],
+        padding: theme.spacing(4),
+        borderRadius: theme.spacing(1.3),
+        border: `1px solid ${theme.palette.grey[300]}`,
+    },
 }))

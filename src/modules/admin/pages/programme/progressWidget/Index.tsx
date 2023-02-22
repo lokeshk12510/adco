@@ -1,6 +1,6 @@
 import React from 'react'
 import { WidgetBox } from 'src/theme/StyledComponents'
-import { Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import GaugeWidget from './GaugeWidget'
 
 const ProgressWidget = () => {
@@ -20,6 +20,22 @@ const ProgressWidget = () => {
                     </Grid>
                     <Grid item xs={12} md={12} lg={6}>
                         <GaugeWidget {...chartProps} title="CONSTRUCTION (TARGET) PROGRAMME" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Box className="rowStyle" display={'flex'} justifyContent={'center'}>
+                            <Typography mx={3}>
+                                Contract value % Costs to date{' '}
+                                <Typography component={'span'} fontWeight={'bold'}>
+                                    25%
+                                </Typography>
+                            </Typography>
+                            <Typography mx={3}>
+                                Prelim value % Costs to date{' '}
+                                <Typography component={'span'} fontWeight={'bold'}>
+                                    23%
+                                </Typography>
+                            </Typography>
+                        </Box>
                     </Grid>
                 </Grid>
             </section>

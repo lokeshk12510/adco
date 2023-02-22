@@ -116,48 +116,49 @@ export default function Header({ isSidebarOpen, handleSidebarToggle }: HeaderPro
 
                 <Box
                     sx={{
-                        // display: { xs: 'none', md: 'flex' },
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: '10px',
                     }}
                 >
-                    {homePage ? (
-                        <TextField
-                            fullWidth
-                            placeholder="Search project"
-                            size="small"
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <Search />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{
-                                display: { sm: 'none', md: 'block' },
-                                minWidth: { md: '200px', lg: '350px' },
-                                '& .MuiOutlinedInput-root': {
-                                    borderRadius: '20px',
-                                },
-                            }}
-                        />
-                    ) : (
-                        <Stack direction={'row'} alignItems="center" justifyContent={'flex-end'} spacing={3}>
-                            <AutoComplete
-                                value={{ title: 'Feb 21', value: 1 }}
-                                options={[{ title: 'Feb 21', value: 1 }]}
-                                onChange={(e) => console.log(e)}
-                                name="search"
-                                showHelperText={false}
-                                sx={{ width: 200 }}
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                        {homePage ? (
+                            <TextField
+                                fullWidth
+                                placeholder="Search project"
+                                size="small"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <Search />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{
+                                    display: { sm: 'none', md: 'block' },
+                                    minWidth: { md: '200px', lg: '350px' },
+                                    '& .MuiOutlinedInput-root': {
+                                        borderRadius: '20px',
+                                    },
+                                }}
                             />
-                            <IconButton>
-                                <ExcelIcon />
-                            </IconButton>
-                        </Stack>
-                    )}
+                        ) : (
+                            <Stack direction={'row'} alignItems="center" justifyContent={'flex-end'} spacing={3}>
+                                <AutoComplete
+                                    value={{ title: 'Feb 21', value: 1 }}
+                                    options={[{ title: 'Feb 21', value: 1 }]}
+                                    onChange={(e) => console.log(e)}
+                                    name="search"
+                                    showHelperText={false}
+                                    sx={{ width: 200 }}
+                                />
+                                <IconButton>
+                                    <ExcelIcon />
+                                </IconButton>
+                            </Stack>
+                        )}
+                    </Box>
                     <Avatar
                         alt="logo"
                         src={Images.ProfileImg}

@@ -8,9 +8,9 @@ import 'react-quill/dist/quill.snow.css'
 import { StyledLabel } from 'src/theme/StyledComponents'
 
 interface RichTextProps extends ReactQuillProps {
-    label: string
+    label?: string
     value: string
-    onChange: () => void
+    onChange: (e: string) => void
     error?: boolean
     showHelperText?: boolean
     helperText?: string
