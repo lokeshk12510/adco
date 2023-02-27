@@ -20,9 +20,10 @@ import { TableStateTypes } from './types'
 interface ProjectTableProps {
     tableValues: TableStateTypes
     setTableValues: React.Dispatch<React.SetStateAction<TableStateTypes>>
+    isLoading: boolean
 }
 
-const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues }) => {
+const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues, isLoading }) => {
     const navigate = useNavigate()
 
     const columns: GridColDef[] = [
@@ -68,7 +69,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues }) =>
     return (
         <StyledDataGrid
             getRowId={(row) => row.id}
-            loading={tableValues.loading}
+            loading={isLoading}
             columns={columns}
             rows={tableValues.rows}
             rowCount={tableValues.rowCount}

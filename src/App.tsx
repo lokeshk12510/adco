@@ -1,10 +1,15 @@
 // Router
 import { useRoutes } from 'react-router-dom'
 import routes from './Router'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+// Create a client
+const queryClient = new QueryClient()
 
 function App() {
     const content = useRoutes(routes)
-    return <div>{content}</div>
+
+    return <QueryClientProvider client={queryClient}>{content}</QueryClientProvider>
 }
 
 export default App

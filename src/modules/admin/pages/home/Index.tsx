@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // Mui
 import { Stack, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -10,9 +10,20 @@ import { StyledBox } from 'src/theme/StyledComponents'
 import ProjectTable from './ProjectTable'
 // Types
 import { TableStateTypes, initialTableValues } from './types'
+import homeApi from 'src/apis/homeApi'
+
+import { useQuery } from 'react-query'
 
 const Home = () => {
     const [tableValues, setTableValues] = useState<TableStateTypes>(initialTableValues)
+
+    const { isLoading, data } = useQuery('todos', homeApi.getProjects)
+
+    console.log(data, isLoading)
+
+    useEffect(() => {
+        data && setTableValues((t) => ({ ...t, rows: data.mock, rowCount: data.mock.length }))
+    }, [data])
 
     return (
         <StyledBox>
@@ -33,7 +44,7 @@ const Home = () => {
                     </IconButton>
                 </Stack>
             </Stack>
-            <ProjectTable tableValues={tableValues} setTableValues={setTableValues} />
+            <ProjectTable tableValues={tableValues} setTableValues={setTableValues} isLoading={isLoading} />
         </StyledBox>
     )
 }
