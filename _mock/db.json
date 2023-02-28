@@ -1,206 +1,225 @@
 {
     "/projects": {
-        "description": "projects",
         "mock": [
             {
                 "id": 1,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9990,
+                "projectName": "Setup new project 1",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 2,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9991,
+                "projectName": "Setup new project 2",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 3,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9992,
+                "projectName": "Setup new project 3",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 4,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9993,
+                "projectName": "Setup new project 4",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 5,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9994,
+                "projectName": "Setup new project 5",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 6,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9995,
+                "projectName": "Setup new project 6",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 7,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9996,
+                "projectName": "Setup new project 7",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 8,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9997,
+                "projectName": "Setup new project 8",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 9,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9998,
+                "projectName": "Setup new project 9",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 10,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 9999,
+                "projectName": "Setup new project 10",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 11,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10000,
+                "projectName": "Setup new project 11",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 12,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10001,
+                "projectName": "Setup new project 12",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 13,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10002,
+                "projectName": "Setup new project 13",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 14,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10003,
+                "projectName": "Setup new project 14",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 15,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10004,
+                "projectName": "Setup new project 15",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 16,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10005,
+                "projectName": "Setup new project 16",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 17,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10006,
+                "projectName": "Setup new project 17",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 18,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10007,
+                "projectName": "Setup new project 18",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 19,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10008,
+                "projectName": "Setup new project 19",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             },
             {
                 "id": 20,
-                "jobID": 9999,
-                "projectName": "Setup new project",
+                "jobId": 10009,
+                "projectName": "Setup new project 20",
                 "state": "QLD",
-                "sector": "Commercial",
+                "constructionSector": "Commercial",
                 "contractType": "Design & Construct",
-                "signOffReq": "CA",
-                "status": true
+                "currentSignoff": "CA",
+                "status": true,
+                "comStatus": true
             }
         ]
     },

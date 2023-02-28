@@ -1,6 +1,6 @@
 import { FC } from 'react'
 // Mui
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid'
 // Icons
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
 // Components
@@ -8,7 +8,7 @@ import CustomNoRowsOverlay from './CustomNoRowsOverlay'
 import GridFooterRow from './GridFooterRow'
 
 interface DataTableProps {
-    rows: Array<any>
+    rows: GridRowsProp
     columns: GridColDef[]
     rowHeight: number
     stickyRowCount: number

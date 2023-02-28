@@ -1,28 +1,23 @@
-import { data } from "./data"
+import { GridRowsProp } from '@mui/x-data-grid'
 
-export type RowTypes = {
+export type Project = {
     id: number
-    jobID: number
+    jobId: number | string
     projectName: string
     state: string
-    sector: string
+    constructionSector: string
     contractType: string
-    signOffReq: string
+    currentSignoff: string
     status: boolean
+    comStatus: boolean
 }
 
 export type TableStateTypes = {
-    loading: boolean
-    rows: RowTypes[]
-    rowCount: number
-    page: number
-    pageSize: number
+    mock: Project[]
 }
 
-export const initialTableValues = {
-    loading: false,
-    rows: data,
-    rowCount: 20,
-    page: 0,
-    pageSize: 10,
+export type ProjectTableProps = {
+    isLoading: boolean
+    rows: GridRowsProp | undefined
+    pageSize?: number
 }

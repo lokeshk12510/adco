@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 // Mui
 import { Stack, Typography } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -8,22 +7,22 @@ import { PDFIcon, RefreshIcon, UserIcon } from 'src/config/icons'
 import { StyledBox } from 'src/theme/StyledComponents'
 // Component
 import ProjectTable from './ProjectTable'
-// Types
-import { TableStateTypes, initialTableValues } from './types'
+// Api
 import homeApi from 'src/apis/homeApi'
-
-import { useQuery } from 'react-query'
+// Query
+import { useQuery } from '@tanstack/react-query'
+import { TableStateTypes } from './types'
+import Tooltip from '@mui/material/Tooltip'
 
 const Home = () => {
-    const [tableValues, setTableValues] = useState<TableStateTypes>(initialTableValues)
-
-    const { isLoading, data } = useQuery('todos', homeApi.getProjects)
-
-    console.log(data, isLoading)
-
-    useEffect(() => {
-        data && setTableValues((t) => ({ ...t, rows: data.mock, rowCount: data.mock.length }))
-    }, [data])
+    // func to get project list data
+    const { isLoading, data, refetch, isRefetching, isFetching } = useQuery({
+        queryKey: ['projects'],
+        queryFn: (): Promise<TableStateTypes> => homeApi.getProjects(),
+        onError: (err) => {
+            console.log(err)
+        },
+    })
 
     return (
         <StyledBox>
@@ -33,9 +32,11 @@ const Home = () => {
                 </Typography>
 
                 <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} spacing={1}>
-                    <IconButton color="warning">
-                        <RefreshIcon />
-                    </IconButton>
+                    <Tooltip title="Refresh" arrow placement="top">
+                        <IconButton color="warning" onClick={() => refetch()}>
+                            <RefreshIcon />
+                        </IconButton>
+                    </Tooltip>
                     <IconButton color="success">
                         <UserIcon />
                     </IconButton>
@@ -44,7 +45,9 @@ const Home = () => {
                     </IconButton>
                 </Stack>
             </Stack>
-            <ProjectTable tableValues={tableValues} setTableValues={setTableValues} isLoading={isLoading} />
+
+            {/* Project list DataGrid */}
+            <ProjectTable rows={data?.mock} isLoading={isLoading || isRefetching || isFetching} />
         </StyledBox>
     )
 }

@@ -15,17 +15,12 @@ import { urls } from 'src/Router'
 // Styled components
 import { StyledDataGrid } from 'src/theme/StyledComponents'
 // Types
-import { TableStateTypes } from './types'
+import { ProjectTableProps } from './types'
 
-interface ProjectTableProps {
-    tableValues: TableStateTypes
-    setTableValues: React.Dispatch<React.SetStateAction<TableStateTypes>>
-    isLoading: boolean
-}
-
-const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues, isLoading }) => {
+const ProjectTable: FC<ProjectTableProps> = ({ isLoading, rows = [], pageSize = 10 }) => {
     const navigate = useNavigate()
 
+    // DataGrid columns def
     const columns: GridColDef[] = [
         {
             field: 'status',
@@ -35,12 +30,12 @@ const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues, isLo
             align: 'center',
             renderCell: ({ value }: any) => <CheckCircleIcon color="success" />,
         },
-        { field: 'jobID', headerName: 'JOB ID', minWidth: 80, flex: 1 },
+        { field: 'jobId', headerName: 'JOB ID', minWidth: 80, flex: 1 },
         { field: 'projectName', headerName: 'Project Name', minWidth: 180, flex: 1 },
         { field: 'state', headerName: 'state', minWidth: 60, flex: 1 },
-        { field: 'sector', headerName: 'sector', minWidth: 120, flex: 1 },
+        { field: 'constructionSector', headerName: 'sector', minWidth: 120, flex: 1 },
         { field: 'contractType', headerName: 'contractType', minWidth: 180, flex: 1 },
-        { field: 'signOffReq', headerName: 'signOff Required', minWidth: 180, flex: 1 },
+        { field: 'currentSignoff', headerName: 'signOff Required', minWidth: 180, flex: 1 },
         {
             field: 'actions',
             headerName: 'Actions',
@@ -71,20 +66,12 @@ const ProjectTable: FC<ProjectTableProps> = ({ tableValues, setTableValues, isLo
             getRowId={(row) => row.id}
             loading={isLoading}
             columns={columns}
-            rows={tableValues.rows}
-            rowCount={tableValues.rowCount}
-            page={tableValues.page}
-            pageSize={tableValues.pageSize}
+            rows={rows || []}
+            rowCount={rows.length}
+            pageSize={pageSize}
             disableSelectionOnClick
             disableColumnMenu
-            rowsPerPageOptions={[10]}
-            onPageChange={(page: number) => {
-                setTableValues((prev) => ({ ...prev, page: page }))
-            }}
             autoHeight={true}
-            onPageSizeChange={(pageSize: number) => {
-                setTableValues((prev) => ({ ...prev, pageSize: pageSize }))
-            }}
             components={{
                 NoRowsOverlay: CustomNoRowsOverlay,
                 NoResultsOverlay: CustomNoRowsOverlay,
