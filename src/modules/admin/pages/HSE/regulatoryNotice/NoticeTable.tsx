@@ -1,7 +1,7 @@
 // mUI
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 // types
-import { ChartDataProps } from 'src/types/ChartTypes'
+import { ChartDataProps } from 'src/components/charts/ChartTypes'
 // styled-components
 import { ChartTable } from 'src/theme/StyledComponents'
 

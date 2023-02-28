@@ -1,3 +1,5 @@
+import { IObjectKeys } from 'src/components/charts/ChartTypes'
+
 export const doughnutData = {
     columns: [
         { title: 'Hours Worked', key: 'type' },
@@ -28,10 +30,6 @@ export const doughnutData = {
             total: 221155,
         },
     ],
-}
-
-interface IObjectKeys {
-    [key: string]: string | number
 }
 
 export interface DoughnutDataProps {

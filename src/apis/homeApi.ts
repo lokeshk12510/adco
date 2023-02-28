@@ -1,10 +1,9 @@
 // Axios Instance
-
-import { AxiosResponse } from 'axios'
 import axiosInstance from 'src/utils/axiosInstance'
 
-const getProjects = async (payload?: AxiosResponse<any, any>) => {
-    return await axiosInstance.post('/projects', payload).then((res) => res.data)
+const getProjects = async (params?: any) => {
+    console.log(params)
+    return await axiosInstance.post(`/projects?searchText=${params}`).then((res) => res.data)
 }
 
 const homeApi = {

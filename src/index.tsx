@@ -1,21 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
-// Router
-import { BrowserRouter } from 'react-router-dom'
 // Component
 import App from './App'
-// Theme
-import ThemeWrapper from './theme/ThemeProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <ThemeWrapper>
-                <App />
-            </ThemeWrapper>
-        </BrowserRouter>
+        <App />
     </React.StrictMode>
 )
 

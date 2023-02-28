@@ -1,12 +1,12 @@
-import { FC, ReactNode, useCallback, useState } from 'react'
+import { FC, ReactNode, useCallback } from 'react'
 // Mui
 import { styled } from '@mui/material'
 // Router
 import { Outlet } from 'react-router-dom'
 // Components
 import Footer from './footer/Index'
-import Header from './header/Index'
 import Sidebar from './sidebar/Index'
+import useGlobalState from 'src/hooks/useGlobalState'
 
 // Layout Config
 export const SIDEBAR_MAX_WIDTH = 260
@@ -22,21 +22,20 @@ interface BodyContainerProps {
 
 const AdminLayout: FC<AdminLayoutProps> = () => {
     // Sidebar open state
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [isOpen, setIsOpen] = useGlobalState('sidebar', false)
 
     // Sidebar Open state handler
     const handleSidebarToggle = useCallback(() => {
-        setIsSidebarOpen((p) => !p)
-    }, [])
+        setIsOpen((p: boolean) => !p)
+    }, [setIsOpen])
+
+    console.log(isOpen)
 
     return (
         <Root>
-            <Sidebar isSidebarOpen={isSidebarOpen} handleSidebarToggle={handleSidebarToggle} />
-            <BodyContainer isSidebarOpen={isSidebarOpen}>
-                <Header handleSidebarToggle={handleSidebarToggle} isSidebarOpen={isSidebarOpen} />
-                <Wrapper>
-                    <Outlet />
-                </Wrapper>
+            <Sidebar isSidebarOpen={isOpen} handleSidebarToggle={handleSidebarToggle} />
+            <BodyContainer isSidebarOpen={isOpen}>
+                <Outlet />
                 <Footer />
             </BodyContainer>
         </Root>
@@ -50,12 +49,6 @@ const Root = styled('main')(({ theme }) => ({
     // display: "flex",
     height: '100vh',
     // minHeight: '100vh',
-}))
-
-const Wrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(2),
-    // background: theme.palette.white.main,
-    paddingTop: 20,
 }))
 
 const BodyContainer = styled('section')<BodyContainerProps>(({ theme, isSidebarOpen }) => ({

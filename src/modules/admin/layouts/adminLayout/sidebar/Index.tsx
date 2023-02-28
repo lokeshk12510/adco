@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 // Router
 import { Link, useLocation } from 'react-router-dom'
-import { urls } from 'src/Router'
+import { urls } from 'src/routes/urls'
 // Icons
 import { ActiveProjectIcon, HSEIcon, OverviewIcon, ProgrammeIcon } from 'src/config/icons'
 // Images

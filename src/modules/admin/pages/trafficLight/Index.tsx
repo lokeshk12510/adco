@@ -11,43 +11,46 @@ import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 // Components
 import CollapseRow from './CollapseRow'
+import PageContainer from 'src/components/pageContainer/Index'
 // Types
 import { rows } from './types'
 
 export default function CollapsibleTable() {
     return (
-        <Box p={5}>
-            <Typography variant="h6" fontWeight="bold" mb={3}>
-                Traffic Lights
-            </Typography>
-            <TableContainer component={Root}>
-                <Table aria-label="collapsible table" size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Project #</TableCell>
-                            <TableCell>Project Name</TableCell>
-                            <TableCell>State</TableCell>
-                            <TableCell>Contract Type</TableCell>
-                            <TableCell>Category</TableCell>
-                            <TableCell>Project Manager</TableCell>
-                            <TableCell>Construction Manager</TableCell>
-                            <TableCell sx={{ minWidth: '250px' }}>Complete %</TableCell>
-                            <TableCell width={'5%'} />
-                        </TableRow>
-                    </TableHead>
+        <PageContainer>
+            <Box p={5}>
+                <Typography variant="h6" fontWeight="bold" mb={3}>
+                    Traffic Lights
+                </Typography>
+                <TableContainer component={Root}>
+                    <Table aria-label="collapsible table" size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Project #</TableCell>
+                                <TableCell>Project Name</TableCell>
+                                <TableCell>State</TableCell>
+                                <TableCell>Contract Type</TableCell>
+                                <TableCell>Category</TableCell>
+                                <TableCell>Project Manager</TableCell>
+                                <TableCell>Construction Manager</TableCell>
+                                <TableCell sx={{ minWidth: '250px' }}>Complete %</TableCell>
+                                <TableCell width={'5%'} />
+                            </TableRow>
+                        </TableHead>
 
-                    <TableBody>
-                        {rows.map((row) => (
-                            <CollapseRow key={row.project} row={row} />
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <Stack direction={'row'} alignItems="center" justifyContent={'space-between'} py={3}>
-                <Typography variant="subtitle2">Showing 1 to 7 of 7 entries</Typography>
-                <Pagination count={1} page={1} color="primary" shape="rounded" />
-            </Stack>
-        </Box>
+                        <TableBody>
+                            {rows.map((row) => (
+                                <CollapseRow key={row.project} row={row} />
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <Stack direction={'row'} alignItems="center" justifyContent={'space-between'} py={3}>
+                    <Typography variant="subtitle2">Showing 1 to 7 of 7 entries</Typography>
+                    <Pagination count={1} page={1} color="primary" shape="rounded" />
+                </Stack>
+            </Box>
+        </PageContainer>
     )
 }
 

@@ -5,17 +5,20 @@ import ProgressWidget from './progressWidget/Index'
 import DelayAllowance from './DelayAllowance'
 import MileStoreWidget from './milestoneWidget/Index'
 import FormSection from './formSection/Index'
+import PageContainer from 'src/components/pageContainer/Index'
 
 const Programme = () => {
     return (
-        <>
-            <ProgrammeWidget />
-            <StatusWidget />
-            <ProgressWidget />
-            <DelayAllowance />
-            <MileStoreWidget />
-            <FormSection />
-        </>
+        <PageContainer>
+            <>
+                <ProgrammeWidget />
+                <StatusWidget />
+                <ProgressWidget />
+                <DelayAllowance />
+                <MileStoreWidget />
+                <FormSection />
+            </>
+        </PageContainer>
     )
 }
 

@@ -11,11 +11,12 @@ import CustomNoRowsOverlay from 'src/components/DataTable/CustomNoRowsOverlay'
 import GridFooterRow from 'src/components/DataTable/GridFooterRow'
 // Router
 import { useNavigate } from 'react-router-dom'
-import { urls } from 'src/Router'
 // Styled components
 import { StyledDataGrid } from 'src/theme/StyledComponents'
 // Types
 import { ProjectTableProps } from './types'
+// Urls
+import { urls } from 'src/routes/urls'
 
 const ProjectTable: FC<ProjectTableProps> = ({ isLoading, rows = [], pageSize = 10 }) => {
     const navigate = useNavigate()
