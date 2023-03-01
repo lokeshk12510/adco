@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import React from 'react'
-import { ChartTable } from '../../../../../theme/StyledComponents'
+import { ChartTable } from 'src/theme/StyledComponents'
 
 const ContractTable = () => {
     return (

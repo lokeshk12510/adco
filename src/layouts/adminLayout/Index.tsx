@@ -12,13 +12,17 @@ import useGlobalState from 'src/hooks/useGlobalState'
 export const SIDEBAR_MAX_WIDTH = 260
 export const SIDEBAR_MIN_WIDTH = 120
 
-interface AdminLayoutProps {
+// -------------- TYPES ------------------
+
+type AdminLayoutProps = {
     children?: ReactNode
 }
 
-interface BodyContainerProps {
+type BodyContainerProps = {
     isSidebarOpen: Boolean
 }
+
+// -------------- TYPES ------------------
 
 const AdminLayout: FC<AdminLayoutProps> = () => {
     // Sidebar open state
@@ -28,8 +32,6 @@ const AdminLayout: FC<AdminLayoutProps> = () => {
     const handleSidebarToggle = useCallback(() => {
         setIsOpen((p: boolean) => !p)
     }, [setIsOpen])
-
-    console.log(isOpen)
 
     return (
         <Root>
@@ -43,6 +45,8 @@ const AdminLayout: FC<AdminLayoutProps> = () => {
 }
 
 export default AdminLayout
+
+// --------------- CUSTOM STYLES ----------------
 
 const Root = styled('main')(({ theme }) => ({
     position: 'relative',

@@ -5,10 +5,10 @@ export const urls = {
     trafficLight: '/traffic-light',
 
     // project info
-    projectInfo: '/project/edit-information',
-    hse: '/project/hse',
-    programme: '/project/programme',
-    general: '/project/general',
+    projectInfo: '/projectInfo/edit-information',
+    hse: '/projectInfo/hse',
+    programme: '/projectInfo/programme',
+    general: '/projectInfo/general',
 
     // status
     404: '/404',

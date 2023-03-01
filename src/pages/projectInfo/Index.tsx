@@ -13,7 +13,7 @@ import { ProjectInfoFormValues, ProjectInfoFormValuesTypes } from './types'
 import { Stack } from '@mui/material'
 import AutoComplete from 'src/components/Form/AutoComplete'
 import IconButton from '@mui/material/IconButton'
-import { ExcelIcon } from '../../../../config/icons'
+import { ExcelIcon } from 'src/config/icons'
 
 const ProjectInfo = () => {
     const methods = useForm<FieldValues>({

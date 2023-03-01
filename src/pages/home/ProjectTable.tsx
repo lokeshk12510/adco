@@ -18,6 +18,15 @@ import { ProjectTableProps } from './types'
 // Urls
 import { urls } from 'src/routes/urls'
 
+/**
+ * Generates a datagrid based on the provided rows and column config
+ *
+ * @param isLoading Boolean value when promise is in loading state
+ * @param rows Array of objects to generate the datagrid
+ * @param pageSize Number to set the total rows to show on each page
+ * @returns ReactNode with memo wrapped for optimization
+ */
+
 const ProjectTable: FC<ProjectTableProps> = ({ isLoading, rows = [], pageSize = 10 }) => {
     const navigate = useNavigate()
 
@@ -62,6 +71,7 @@ const ProjectTable: FC<ProjectTableProps> = ({ isLoading, rows = [], pageSize = 
             ],
         },
     ]
+
     return (
         <StyledDataGrid
             getRowId={(row) => row.id}

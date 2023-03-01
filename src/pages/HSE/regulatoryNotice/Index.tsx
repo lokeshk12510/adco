@@ -1,7 +1,7 @@
 // Mui
 import { Grid, Typography } from '@mui/material'
 // Styled Components
-import { StyledBox } from '../../../../../theme/StyledComponents'
+import { StyledBox } from 'src/theme/StyledComponents'
 // Components
 import NoticeTable from './NoticeTable'
 import NoticeChart from './NoticeChart'

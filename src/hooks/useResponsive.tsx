@@ -2,14 +2,20 @@
 import { Breakpoint, useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-/* 
-	This hook will return a boolean for media query value
-
-	const isMd = useResponsive("up", "md")
-
-	console.log(isMd)  // true if current screen above 'md' 
-
-*/
+/**
+ * This hook will return a boolean for media query value
+ *
+ * @param query Query to limit the size
+ * @param key Breakpoint used to identified by screen width
+ * @param start To set the starting point of the screen width
+ * @param end To set the ending point of the screen width
+ * @returns A hook to get the boolean value of props is matched
+ *
+ * const isMd = useResponsive("up", "md")
+ *
+ * console.log(isMd)  // true if current screen above 'md'
+ *
+ */
 
 const useResponsive = (query: string, key: Breakpoint, start: number = 0, end: number = 0) => {
     const theme = useTheme()

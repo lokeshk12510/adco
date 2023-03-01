@@ -9,11 +9,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import ThemeWrapper from './theme/ThemeProvider'
 import Routes from './routes/Index'
 
-// Create a client
+// Create a client instance
 export const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            refetchOnWindowFocus: false,
+            refetchOnWindowFocus: false, // By default, refetch on window focus is disabled
         },
     },
 })

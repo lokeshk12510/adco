@@ -1,5 +1,7 @@
 import React from 'react'
+// Mui
 import { styled } from '@mui/material'
+// Components
 import Header from './header/Index'
 
 type PageContainerProps = {
@@ -21,6 +23,5 @@ export default PageContainer
 
 const Wrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(2),
-    // background: theme.palette.white.main,
     paddingTop: 20,
 }))

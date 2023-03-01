@@ -13,7 +13,6 @@ export function generateGradient() {
 
     let hex = createHex()
 
-    // var gradient = "linear-gradient(" + deg + "deg, " + "#" + hex + ", " + "#" + hex +")";
     var gradient = `linear-gradient(${deg}deg, ${hex}, ${hex})`
 
     return gradient

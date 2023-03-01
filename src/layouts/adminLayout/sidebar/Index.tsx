@@ -8,25 +8,26 @@ import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 // Router
 import { Link, useLocation } from 'react-router-dom'
-import { urls } from 'src/routes/urls'
-// Icons
-import { ActiveProjectIcon, HSEIcon, OverviewIcon, ProgrammeIcon } from 'src/config/icons'
 // Images
 import Images from 'src/config/images'
 // Hooks
 import useResponsive from 'src/hooks/useResponsive'
 // Config
 import { SIDEBAR_MAX_WIDTH, SIDEBAR_MIN_WIDTH } from '../Index'
-import { GeneralIcon } from '../../../../../config/icons'
+import { generateSidebarMenu, sidebarConfig } from './sidebar_config'
 
-interface SidebarProps {
+// -------------- TYPES ----------------------
+
+type SidebarProps = {
     isSidebarOpen: boolean
-    handleSidebarToggle: () => void
+    handleSidebarToggle?: () => void
 }
 
-interface StyleRootProps {
-    isSidebarOpen: Boolean
+type StyleRootProps = {
+    open: Boolean
 }
+
+// -------------- TYPES ----------------------
 
 const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
     // State to sidebar position
@@ -55,16 +56,21 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
         }
     })
 
-    const homePage = location.pathname === '/'
-
     return (
-        <Root isSidebarOpen={isSidebarOpen} variant={isPermanent ? 'permanent' : 'temporary'}>
+        <Root
+            open={isSidebarOpen}
+            variant={isPermanent ? 'permanent' : 'temporary'}
+            ModalProps={{
+                keepMounted: false,
+            }}
+            onClose={handleSidebarToggle}
+        >
             <>
                 <LogoImg>
                     <img className="image" src={isSidebarOpen ? Images.MainLogo : Images.MiniLogo} alt="logo" />
                 </LogoImg>
                 <StyledListWrapper
-                    isSidebarOpen={isSidebarOpen}
+                    open={isSidebarOpen}
                     sx={{ width: '100%' }}
                     aria-labelledby="nested-list-subheader"
                     subheader={
@@ -73,56 +79,19 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
                         </ListSubheader>
                     }
                 >
-                    <ListItemButton component={Link} to={urls.home} selected={location.pathname === urls.home && true}>
-                        <ListItemIcon>
-                            <ActiveProjectIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Active project" />
-                    </ListItemButton>
-                    {!homePage && (
-                        <>
+                    {generateSidebarMenu(sidebarConfig, location).map((menu, i) => {
+                        return (
                             <ListItemButton
+                                key={menu.key}
                                 component={Link}
-                                to={urls.projectInfo}
-                                selected={location.pathname === urls.projectInfo && true}
+                                to={menu.path}
+                                selected={location.pathname === menu.path && true}
                             >
-                                <ListItemIcon>
-                                    <OverviewIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Overview" />
+                                <ListItemIcon>{menu.icon}</ListItemIcon>
+                                <ListItemText primary={menu.label} />
                             </ListItemButton>
-                            <ListItemButton
-                                component={Link}
-                                to={urls.hse}
-                                selected={location.pathname === urls.hse && true}
-                            >
-                                <ListItemIcon>
-                                    <HSEIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="HSE" />
-                            </ListItemButton>
-                            <ListItemButton
-                                component={Link}
-                                to={urls.programme}
-                                selected={location.pathname === urls.programme && true}
-                            >
-                                <ListItemIcon>
-                                    <ProgrammeIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Programme" />
-                            </ListItemButton>
-                            <ListItemButton
-                                component={Link}
-                                to={urls.general}
-                                selected={location.pathname === urls.general && true}
-                            >
-                                <ListItemIcon>
-                                    <GeneralIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="General" />
-                            </ListItemButton>
-                        </>
-                    )}
+                        )
+                    })}
                 </StyledListWrapper>
             </>
         </Root>
@@ -131,20 +100,21 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, handleSidebarToggle }) => {
 
 export default Sidebar
 
+// --------------- CUSTOM STYLES ----------------
+
 const Root = styled(Drawer, {
     shouldForwardProp: (prop) => prop !== 'isSidebarOpen',
-})<StyleRootProps>(({ theme, isSidebarOpen }) => ({
+})<StyleRootProps>(({ theme, open }) => ({
     '& .MuiPaper-root': {
         background: theme.palette.secondary.main,
         position: 'fixed',
-        width: isSidebarOpen ? SIDEBAR_MAX_WIDTH : SIDEBAR_MIN_WIDTH,
+        width: open ? SIDEBAR_MAX_WIDTH : SIDEBAR_MIN_WIDTH,
         boxShadow: theme.shadows[2],
         minHeight: '100vh',
-        // width: 'inherit',
         borderRight: 'none',
         overflowY: 'auto',
-        // position: 'unset',
         zIndex: 1200,
+
         [theme.breakpoints.up('md')]: {
             transition: theme.transitions.create('all', {
                 easing: theme.transitions.easing.sharp,
@@ -167,21 +137,21 @@ const LogoImg = styled('div')(({ theme }) => ({
 
 const StyledListWrapper = styled(List, {
     shouldForwardProp: (prop) => prop !== 'isSidebarOpen',
-})<StyleRootProps>(({ theme, isSidebarOpen }) => ({
+})<StyleRootProps>(({ theme, open }) => ({
     paddingBlock: 0,
-    // backgroundColor: theme.palette.secondary.main,
+
     '& .MuiListSubheader-root': {
         background: 'transparent',
         color: theme.palette.common.white,
         textTransform: 'uppercase',
-        display: isSidebarOpen ? 'block' : 'none',
+        display: open ? 'block' : 'none',
     },
     '& .MuiListItemButton-root': {
         paddingBlock: theme.spacing(3),
-
         paddingInline: theme.spacing(3),
-        justifyContent: isSidebarOpen ? 'flex-start' : 'center',
-        minHeight: isSidebarOpen ? 'unset' : 60,
+        justifyContent: open ? 'flex-start' : 'center',
+        minHeight: open ? 'unset' : 60,
+
         '& .MuiListItemIcon-root,.MuiListItemText-root': {
             color: theme.palette.grey[500],
         },
@@ -199,17 +169,17 @@ const StyledListWrapper = styled(List, {
         },
     },
     '& .MuiListItem-root': {
-        flexDirection: isSidebarOpen ? 'row' : 'column',
+        flexDirection: open ? 'row' : 'column',
     },
     '& .MuiListItemIcon-root': {
         minWidth: 38,
-        justifyContent: isSidebarOpen ? 'flex-start' : 'center',
+        justifyContent: open ? 'flex-start' : 'center',
         '& .MuiSvgIcon-root': {
-            fontSize: isSidebarOpen ? 20 : 28,
+            fontSize: open ? 20 : 28,
         },
     },
     '& .MuiListItemText-root': {
-        display: isSidebarOpen ? 'block' : 'none',
+        display: open ? 'block' : 'none',
         whiteSpace: 'nowrap',
     },
 }))

@@ -13,8 +13,8 @@ const FormSection = () => {
 
     const methods = useForm({
         defaultValues: {
-            reviewer_comments: '',
-            files: [],
+            ReviewerComments: '',
+            Attachments: [],
             issuedToClient: false,
             procurement: false,
             tradePartners: false,

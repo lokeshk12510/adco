@@ -1,6 +1,6 @@
 import React from 'react'
 import { WidgetBox } from 'src/theme/StyledComponents'
-import CommentSection from '../../../../../components/CommentSection/Index'
+import CommentSection from 'src/components/CommentSection/Index'
 import { useFormContext } from 'react-hook-form'
 
 const CommentWidget = () => {

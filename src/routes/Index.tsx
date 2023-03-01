@@ -1,15 +1,15 @@
 // Router
 import { Navigate, useRoutes } from 'react-router-dom'
 // Layouts
-import AdminLayout from 'src/modules/admin/layouts/adminLayout/Index'
+import AdminLayout from 'src/layouts/adminLayout/Index'
 // Pages
-import HSE from 'src/modules/admin/pages/HSE/Index'
-import Home from 'src/modules/admin/pages/home/Index'
-import ProjectInfo from 'src/modules/admin/pages/projectInfo/Index'
-import Error from 'src/modules/admin/pages/status/Error'
-import TrafficLight from 'src/modules/admin/pages/trafficLight/Index'
-import Programme from 'src/modules/admin/pages/programme/Index'
-import General from 'src/modules/admin/pages/general/Index'
+import HSE from 'src/pages/HSE/Index'
+import Home from 'src/pages/home/Index'
+import ProjectInfo from 'src/pages/projectInfo/Index'
+import Error from 'src/pages/status/Error'
+import TrafficLight from 'src/pages/trafficLight/Index'
+import Programme from 'src/pages/programme/Index'
+import General from 'src/pages/general/Index'
 // urls
 import { urls } from './urls'
 
@@ -28,7 +28,7 @@ const Routes = () => {
                     element: <TrafficLight />,
                 },
                 {
-                    path: 'project',
+                    path: 'projectInfo',
                     children: [
                         {
                             path: '',

@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
-import { ElectricityIcon, FuelIcon, GasIcon, WaterIcon, RefrigerantIcon, WasteIcon } from '../../../../config/icons'
+import { ElectricityIcon, FuelIcon, GasIcon, WaterIcon, RefrigerantIcon, WasteIcon } from 'src/config/icons'
 import { styled } from '@mui/material'
 import { useState } from 'react'
 

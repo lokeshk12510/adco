@@ -1,9 +1,8 @@
 import axios from 'axios'
 import constants from 'src/config/contants'
 
-const UNAUTHORIZED = 401
-const FORBIDDEN = 403
-const CSRF_TOKEN_MISMATCH = 419
+// Set logout status codes
+const LOGOUT_STATUS = [401, 403, 419]
 
 // Set config defaults when creating the instance
 const axiosInstance = axios.create({
@@ -11,6 +10,7 @@ const axiosInstance = axios.create({
     //withCredentials: true,
 })
 
+// Global config for every axios `requests`
 axiosInstance.interceptors.request.use(
     (config) => {
         config.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
@@ -21,6 +21,7 @@ axiosInstance.interceptors.request.use(
     }
 )
 
+// Global config for every axios `response`
 axiosInstance.interceptors.response.use(
     (response) => {
         return response
@@ -28,7 +29,7 @@ axiosInstance.interceptors.response.use(
     (error) => {
         if (error.response && error.response.status) {
             const resStatus = error.response.status
-            if (resStatus === UNAUTHORIZED || resStatus === FORBIDDEN || resStatus === CSRF_TOKEN_MISMATCH) {
+            if (LOGOUT_STATUS.includes(resStatus)) {
                 console.log('logged out!')
             }
         }

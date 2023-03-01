@@ -28,7 +28,7 @@ const Home = () => {
         onError: (err) => {
             console.log(err)
         },
-        staleTime: 60000,
+        staleTime: 60000, // Time in milliseconds, To delay next request
     })
 
     return (
@@ -65,6 +65,7 @@ const Home = () => {
 
 export default Home
 
+// Component to render as child of the `Header` component
 const HeaderContent = ({
     search,
     setSearch,
