@@ -13,23 +13,26 @@ import PageContainer from 'src/components/pageContainer/Index'
 // Api
 import homeApi from 'src/apis/homeApi'
 // Query
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 // Types
 import { TableStateTypes } from './types'
 import { useState } from 'react'
 
 const Home = () => {
+    const [search, setSearch] = useState<string>('')
+
     // func to get project list data
     const { isLoading, data, refetch, isRefetching, isFetching } = useQuery({
-        queryKey: ['projects'],
-        queryFn: (): Promise<TableStateTypes> => homeApi.getProjects(),
+        queryKey: ['projects', search],
+        queryFn: (): Promise<TableStateTypes> => homeApi.getProjects(search),
         onError: (err) => {
             console.log(err)
         },
+        staleTime: 60000,
     })
 
     return (
-        <PageContainer render={HeaderContent} title="Active PCR Projects">
+        <PageContainer render={() => HeaderContent({ search, setSearch })} title="Active PCR Projects">
             <>
                 <StyledBox>
                     <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} spacing={2} mb={3}>
@@ -62,18 +65,15 @@ const Home = () => {
 
 export default Home
 
-const HeaderContent = () => {
-    // Get QueryClient from the context
-    const queryClient = useQueryClient()
-
-    const [search, setSearch] = useState<string>('')
-
+const HeaderContent = ({
+    search,
+    setSearch,
+}: {
+    search: string
+    setSearch: React.Dispatch<React.SetStateAction<string>>
+}) => {
     const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setSearch(e.target.value)
-
-        queryClient.invalidateQueries({
-            queryKey: ['projects', { searchText: e.target.value }],
-        })
     }
 
     return (

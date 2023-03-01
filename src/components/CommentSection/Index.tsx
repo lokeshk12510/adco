@@ -35,7 +35,7 @@ const CommentSection = ({ onFormSubmit, onFormCancel, methods }: CommentSectionP
                     rules={{
                         required: { value: true, message: 'This field is required' },
                     }}
-                    name="reviewer_comments"
+                    name="ReviewerComments"
                     render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                         return (
                             <RichTextField
@@ -53,7 +53,7 @@ const CommentSection = ({ onFormSubmit, onFormCancel, methods }: CommentSectionP
             <Grid item xs={12} md={7} lg={5}>
                 <Controller
                     control={control}
-                    name="files"
+                    name="Attachments"
                     render={({ field: { onChange, value, onBlur } }) => {
                         const handleOnChange = (file: File[]) => {
                             onChange(file)

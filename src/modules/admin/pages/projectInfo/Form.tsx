@@ -15,7 +15,7 @@ const ProjectInfoForm = () => {
             <Grid container columnSpacing={4} rowSpacing={1}>
                 <Grid item xs={6} md={6} lg={4}>
                     <Controller
-                        name="projectImage"
+                        name="ProjectImage"
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <ImageUploader
@@ -34,7 +34,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="projectName"
+                        name="ProjectName"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -56,7 +56,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="jobId"
+                        name="JobId"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -77,7 +77,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="state"
+                        name="State"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <AutoComplete
@@ -101,7 +101,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="construction_sector"
+                        name="ConstructionSector"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <AutoComplete
@@ -125,7 +125,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="contract_type"
+                        name="ContractType"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <AutoComplete
@@ -149,7 +149,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="reportDate"
+                        name="ReportDate"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField
@@ -170,7 +170,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="tender"
+                        name="ECITender"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -191,7 +191,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="gross_contract"
+                        name="NetGross"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -212,7 +212,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="weather_allowance"
+                        name="WeatherAllowance"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -233,7 +233,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="budget_contingency"
+                        name="BudgetContingency"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -254,7 +254,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="site_commencement"
+                        name="SiteCommencement"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField
@@ -274,7 +274,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="target_margin"
+                        name="TargetMargin"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -295,7 +295,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="target_completion"
+                        name="TargetCompletion"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField
@@ -315,7 +315,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="original_contract_sum"
+                        name="ContractSum"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -336,7 +336,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="contract_award_date"
+                        name="ContractAwardDate"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField
@@ -356,7 +356,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="contract_completion_date"
+                        name="ContractCompletionDate"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField
@@ -376,7 +376,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="contract_duration"
+                        name="ContractDuration"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <InputField
@@ -397,7 +397,7 @@ const ProjectInfoForm = () => {
                         rules={{
                             required: { value: true, message: 'This field is required' },
                         }}
-                        name="practial_completion_achieved"
+                        name="PracticalCompletionAchieved"
                         render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => {
                             return (
                                 <DateField

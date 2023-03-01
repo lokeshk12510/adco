@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 // Mui
 import Tooltip from '@mui/material/Tooltip'
 // Icons
@@ -82,4 +82,4 @@ const ProjectTable: FC<ProjectTableProps> = ({ isLoading, rows = [], pageSize = 
     )
 }
 
-export default ProjectTable
+export default memo(ProjectTable)
