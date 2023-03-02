@@ -12,6 +12,7 @@ import Programme from 'src/pages/programme/Index'
 import General from 'src/pages/general/Index'
 // urls
 import { urls } from './urls'
+import Financials from 'src/pages/financials/Index'
 
 const Routes = () => {
     return useRoutes([
@@ -49,6 +50,10 @@ const Routes = () => {
                         {
                             path: urls.general,
                             element: <General />,
+                        },
+                        {
+                            path: urls.financials,
+                            element: <Financials />,
                         },
                     ],
                 },
