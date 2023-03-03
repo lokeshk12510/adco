@@ -1,6 +1,7 @@
 import { urls } from 'src/routes/urls'
 import { OverviewIcon, ActiveProjectIcon, HSEIcon, ProgrammeIcon, GeneralIcon } from '../../../config/icons'
 import { Location } from 'react-router-dom'
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange'
 
 type menuObj = {
     path: string
@@ -50,6 +51,14 @@ export const sidebarConfig: menuObj[] = [
         icon: <GeneralIcon />,
         visible: true,
         key: 'general',
+        showIn: ['projectInfo'],
+    },
+    {
+        path: urls.financials,
+        label: 'Financials',
+        icon: <CurrencyExchangeIcon />,
+        visible: true,
+        key: 'financials',
         showIn: ['projectInfo'],
     },
 ]

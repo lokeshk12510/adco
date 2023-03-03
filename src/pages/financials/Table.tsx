@@ -1,5 +1,5 @@
 import React from 'react'
-
+// React-table
 import {
     ColumnDef,
     ColumnPinningState,
@@ -7,8 +7,11 @@ import {
     getCoreRowModel,
     useReactTable,
     CellContext,
+    Row,
 } from '@tanstack/react-table'
-import { makeData, Person } from './makeData'
+// data
+import { columns, generateDynamicColumns, Person, rows } from './makeData'
+// Mui
 import TableContainer from '@mui/material/TableContainer'
 import {
     TableHead,
@@ -19,33 +22,54 @@ import {
     styled,
     Box,
     TableCellProps,
+    TableRowProps,
+    colors,
 } from '@mui/material'
 
+// including additional `getCellContext` to `ColumnMeta`, get access to cell context
 declare module '@tanstack/react-table' {
     interface ColumnMeta<TData, TValue> {
         // Your additional properties here
-        getCellContent: (context: CellContext<TData, TValue>) => TableCellProps
+        getCellContext: (context: CellContext<TData, TValue>) => TableCellProps | void | any
     }
 }
 
+// Func to provide props to table row
+const getRowProps = (context: Row<Person>): TableRowProps | void => {
+    if (context.original.section.includes('section')) {
+        return { className: 'sectionHeader', sx: (theme) => ({ background: theme.palette.primary.light }) }
+    }
+
+    if (context.original.section.includes('forecast')) {
+        return {
+            className: 'sectionFooter',
+        }
+    }
+}
+
+// Func to provide props to table cell
+const getCellProps = (context: CellContext<Person, unknown>): TableCellProps | void => {
+    if (context.row.original.section.includes('section')) {
+        return {
+            style: { fontWeight: 'bold', minWidth: '30%', textTransform: 'uppercase' },
+            className: 'bold',
+        }
+    }
+}
+
+// column definitions for table configurations
 const defaultColumns: ColumnDef<Person>[] = [
     {
         accessorKey: 'section',
         cell: (info) => info.getValue(),
+        header: () => '',
         footer: (props) => props.column.id,
         meta: {
-            // className: 'bold',
-            // style: { fontWeight: 'bold' },
-            getCellContent: (context: CellContext<Person, unknown>) => {
-                if (context.row.index === 0) {
-                    console.log(context)
+            getCellContext: (context: CellContext<Person, unknown>) => {
+                if (context.row.original.section.includes('section')) {
+                    return { colSpan: 2 }
                 }
-                return { style: { fontWeight: 'bold' }, className: 'bold' }
             },
-        },
-        getUniqueValues: (row: any) => {
-            console.log(row)
-            return row
         },
     },
     {
@@ -54,81 +78,41 @@ const defaultColumns: ColumnDef<Person>[] = [
         cell: (info) => info.getValue(),
         header: () => <span>Total</span>,
         footer: (props) => props.column.id,
+        meta: {
+            getCellContext: (context: CellContext<Person, unknown>) => {
+                if (context.row.original.section.includes('section')) {
+                    return { visibility: false, className: 'display-none' }
+                }
+            },
+        },
     },
-    {
-        accessorKey: 'jan22',
-        header: () => 'Jan 22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'feb22',
-        header: () => 'feb22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'mar22',
-        header: () => 'mar22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'apr22',
-        header: () => 'apr22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'may22',
-        header: () => 'may22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'jun22',
-        header: () => 'jun22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'jul22',
-        header: () => 'jul22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'aug22',
-        header: () => 'aug22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'sep22',
-        header: () => 'sep22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'oct22',
-        header: () => 'oct22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'nov22',
-        header: () => 'nov22',
-        footer: (props) => props.column.id,
-    },
-    {
-        accessorKey: 'dec22',
-        header: () => 'dec22',
-        footer: (props) => props.column.id,
-    },
+    ...generateDynamicColumns(columns), // generating dynamic columns based on the custom data
     {
         accessorKey: 'unallocated',
         header: () => 'unallocated',
         footer: (props) => props.column.id,
+        meta: {
+            getCellContext: (context: CellContext<Person, unknown>) => {
+                if (context.row.original.section.includes('section')) {
+                    return { colSpan: 15 }
+                }
+            },
+        },
     },
     {
         accessorKey: 'toDate',
-        header: () => 'toDate',
+        header: () => 'To Date',
         footer: (props) => props.column.id,
+        meta: {
+            getCellContext: (context: CellContext<Person, unknown>) => {
+                return { style: { maxWidth: 100 }, className: 'bold', width: 100 }
+            },
+        },
     },
 ]
 
 function Table() {
-    const [data] = React.useState(() => makeData(5000))
+    const [data] = React.useState(rows)
     const [columns] = React.useState(() => [...defaultColumns])
 
     const [columnPinning, setColumnPinning] = React.useState<ColumnPinningState>({
@@ -136,7 +120,7 @@ function Table() {
         right: ['toDate'],
     })
 
-    const [isSplit] = React.useState(true)
+    const [isSplit] = React.useState(true) // to separate table to sticky mode
 
     const table = useReactTable({
         data,
@@ -146,14 +130,12 @@ function Table() {
         },
         onColumnPinningChange: setColumnPinning,
         getCoreRowModel: getCoreRowModel(),
-        debugTable: true,
-        debugHeaders: true,
-        debugColumns: true,
     })
 
     return (
         <Box>
             <Root>
+                {/* -------------------- left table ------------------------ */}
                 {isSplit ? (
                     <MuiTable className="left" style={{ position: 'sticky', left: 0 }} size="small">
                         <TableHead>
@@ -170,32 +152,38 @@ function Table() {
                             ))}
                         </TableHead>
                         <TableBody>
-                            {table
-                                .getRowModel()
-                                .rows.slice(0, 20)
-                                .map((row) => {
-                                    return (
-                                        <TableRow key={row.id}>
-                                            {row.getLeftVisibleCells().map((cell) => {
-                                                let hasMeta = cell.getContext().cell.column.columnDef.meta
+                            {table.getRowModel().rows.map((row) => {
+                                return (
+                                    <TableRow key={row.id} {...getRowProps(row)}>
+                                        {row.getLeftVisibleCells().map((cell) => {
+                                            let hasMeta = cell.getContext().cell.column.columnDef.meta
 
-                                                return (
-                                                    <TableCell
-                                                        key={cell.id}
-                                                        {...(hasMeta && {
-                                                            ...hasMeta.getCellContent(cell.getContext()),
-                                                        })}
-                                                    >
-                                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                    </TableCell>
-                                                )
-                                            })}
-                                        </TableRow>
-                                    )
-                                })}
+                                            if (hasMeta?.getCellContext(cell.getContext())?.visibility === false) {
+                                                return null
+                                            }
+
+                                            return (
+                                                <TableCell
+                                                    key={cell.id}
+                                                    {...(hasMeta && {
+                                                        ...hasMeta.getCellContext(cell.getContext()),
+                                                    })}
+                                                    {...getCellProps(cell.getContext())}
+                                                    visibility=""
+                                                >
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+                                            )
+                                        })}
+                                    </TableRow>
+                                )
+                            })}
                         </TableBody>
                     </MuiTable>
                 ) : null}
+                {/* -------------------- left table ------------------------ */}
+
+                {/* -------------------- center table ------------------------ */}
                 <MuiTable size="small">
                     <TableHead>
                         {(isSplit ? table.getCenterHeaderGroups() : table.getHeaderGroups()).map((headerGroup) => (
@@ -211,31 +199,37 @@ function Table() {
                         ))}
                     </TableHead>
                     <TableBody>
-                        {table
-                            .getRowModel()
-                            .rows.slice(0, 20)
-                            .map((row) => {
-                                return (
-                                    <TableRow key={row.id}>
-                                        {(isSplit ? row.getCenterVisibleCells() : row.getVisibleCells()).map((cell) => {
-                                            let hasMeta = cell.getContext().cell.column.columnDef.meta
+                        {table.getRowModel().rows.map((row) => {
+                            return (
+                                <TableRow key={row.id} {...getRowProps(row)}>
+                                    {(isSplit ? row.getCenterVisibleCells() : row.getVisibleCells()).map((cell) => {
+                                        let hasMeta = cell.getContext().cell.column.columnDef.meta
 
-                                            return (
-                                                <TableCell
-                                                    key={cell.id}
-                                                    {...(hasMeta && { ...hasMeta.getCellContent(cell.getContext()) })}
-                                                >
-                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                </TableCell>
-                                            )
-                                        })}
-                                    </TableRow>
-                                )
-                            })}
+                                        if (hasMeta?.getCellContext(cell.getContext())?.visibility === false) {
+                                            return null
+                                        }
+
+                                        return (
+                                            <TableCell
+                                                key={cell.id}
+                                                {...(hasMeta && { ...hasMeta.getCellContext(cell.getContext()) })}
+                                                {...getCellProps(cell.getContext())}
+                                                visibility=""
+                                            >
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </TableCell>
+                                        )
+                                    })}
+                                </TableRow>
+                            )
+                        })}
                     </TableBody>
                 </MuiTable>
+                {/* -------------------- center table ------------------------ */}
+
+                {/* -------------------- right table ------------------------ */}
                 {isSplit ? (
-                    <MuiTable className="right" style={{ position: 'sticky', right: 0 }} size="small">
+                    <MuiTable className="right" style={{ position: 'sticky', right: 0, maxWidth: 150 }} size="small">
                         <TableHead>
                             {table.getRightHeaderGroups().map((headerGroup) => (
                                 <TableRow key={headerGroup.id}>
@@ -250,32 +244,32 @@ function Table() {
                             ))}
                         </TableHead>
                         <TableBody>
-                            {table
-                                .getRowModel()
-                                .rows.slice(0, 20)
-                                .map((row) => {
-                                    return (
-                                        <TableRow key={row.id}>
-                                            {row.getRightVisibleCells().map((cell) => {
-                                                let hasMeta = cell.getContext().cell.column.columnDef.meta
+                            {table.getRowModel().rows.map((row) => {
+                                return (
+                                    <TableRow key={row.id} {...getRowProps(row)}>
+                                        {row.getRightVisibleCells().map((cell) => {
+                                            let hasMeta = cell.getContext().cell.column.columnDef.meta
 
-                                                return (
-                                                    <TableCell
-                                                        key={cell.id}
-                                                        {...(hasMeta && {
-                                                            ...hasMeta.getCellContent(cell.getContext()),
-                                                        })}
-                                                    >
-                                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                    </TableCell>
-                                                )
-                                            })}
-                                        </TableRow>
-                                    )
-                                })}
+                                            return (
+                                                <TableCell
+                                                    key={cell.id}
+                                                    {...(hasMeta && {
+                                                        ...hasMeta.getCellContext(cell.getContext()),
+                                                    })}
+                                                    {...getCellProps(cell.getContext())}
+                                                    visibility=""
+                                                >
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+                                            )
+                                        })}
+                                    </TableRow>
+                                )
+                            })}
                         </TableBody>
                     </MuiTable>
                 ) : null}
+                {/* -------------------- right table ------------------------ */}
             </Root>
         </Box>
     )
@@ -288,15 +282,45 @@ const Root = styled(TableContainer)(({ theme }) => ({
     width: '100%',
     overflow: 'auto',
     position: 'relative',
+    borderRadius: 7,
     '& .MuiTable-root': {
         collapse: 'separate',
         '&.right': {
+            zIndex: 2,
             marginLeft: 15,
+            '& .MuiTableCell-head': {
+                '&:last-of-type': {
+                    borderTopRightRadius: 5,
+                },
+                '&:first-of-type': {
+                    borderLeft: `2px solid ${theme.palette.grey[500]}`,
+                },
+            },
+            '& .MuiTableCell-body': {
+                '&:first-of-type': {
+                    borderLeft: `2px solid ${theme.palette.grey[500]}`,
+                },
+            },
+        },
+        '&.left': {
+            zIndex: 2,
+            '& .MuiTableCell-head': {
+                '&:first-of-type': {
+                    borderTopLeftRadius: 5,
+                },
+                '&:last-of-type': {
+                    borderRight: `2px solid ${theme.palette.grey[500]}`,
+                },
+            },
+            '& .MuiTableCell-body': {
+                '&:last-of-type': {
+                    borderRight: `2px solid ${theme.palette.grey[500]}`,
+                },
+            },
         },
     },
     '& .MuiTableCell-root': {
-        background: theme.palette.common.white,
-        border: `1px solid ${theme.palette.grey[300]}`,
+        border: `1px solid ${theme.palette.grey[200]}`,
         whiteSpace: 'nowrap',
     },
     '& .MuiTableCell-head': {
@@ -305,16 +329,33 @@ const Root = styled(TableContainer)(({ theme }) => ({
         border: 'none',
         textTransform: 'uppercase',
         textAlign: 'center',
-        '&:first-of-type': {
-            borderTopLeftRadius: 5,
-        },
-        '&:last-of-type': {
-            borderTopRightRadius: 5,
-        },
     },
     '& .MuiTableBody-root': {
+        background: theme.palette.common.white,
         '& .MuiTableCell-body': {
             height: 35,
+            padding: '2px 5px',
+            '&.editable': {
+                background: colors.yellow[100],
+            },
+            '&.disabled': {
+                pointerEvents: 'none',
+            },
+        },
+        '& .MuiTableRow-root': {
+            // '&:hover': {
+            //     opacity: 0.7,
+            // },
+            '&.sectionHeader': {
+                background: theme.palette.primary.light,
+            },
+        },
+        '& .sectionFooter': {
+            '& .MuiTableCell-body': {
+                background: theme.palette.grey[300],
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+            },
         },
     },
 }))

@@ -8,6 +8,7 @@ import DateField from 'src/components/Form/DateField'
 import ImageUploader from 'src/components/Form/ImageUploadField'
 import InputField from 'src/components/Form/InputField'
 import Review from './Review'
+import Traffic from './Traffic'
 
 const ProjectInfoForm = () => {
     return (
@@ -72,6 +73,11 @@ const ProjectInfoForm = () => {
                         }}
                     />
                 </Grid>
+
+                <Grid item xs={12}>
+                    <Traffic />
+                </Grid>
+
                 <Grid item xs={6} md={6} lg={4}>
                     <Controller
                         rules={{

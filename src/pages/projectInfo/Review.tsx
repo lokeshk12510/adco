@@ -11,6 +11,7 @@ import Dialog from 'src/components/Dialog'
 import DateField from 'src/components/Form/DateField'
 // Constants
 import { DATE_FORMAT } from 'src/config/contants'
+import InputField from 'src/components/Form/InputField'
 interface StyledCardProps {
     status: boolean
 }
@@ -21,12 +22,14 @@ interface ReviewListProps {
     status: boolean
     approved_date: Date | null
     id: number
+    assignee: string
 }
 
-const reviewList = [
+const reviewList: ReviewListProps[] = [
     {
         name: 'contract_administrator',
         title: 'Contract Administrator',
+        assignee: 'Doug Zuzic',
         status: true,
         approved_date: new Date(),
         id: 1,
@@ -37,6 +40,7 @@ const reviewList = [
         status: false,
         approved_date: null,
         id: 2,
+        assignee: '-',
     },
     {
         name: 'construction_manager',
@@ -44,6 +48,7 @@ const reviewList = [
         status: true,
         approved_date: new Date(),
         id: 3,
+        assignee: 'Charlie Archie',
     },
     {
         name: 'commercial_manager',
@@ -51,6 +56,7 @@ const reviewList = [
         status: false,
         approved_date: null,
         id: 4,
+        assignee: '-',
     },
     {
         name: 'planning_manager',
@@ -58,6 +64,7 @@ const reviewList = [
         status: true,
         approved_date: new Date(),
         id: 5,
+        assignee: 'Lucas Matilda',
     },
 ]
 
@@ -66,11 +73,17 @@ const Review = () => {
 
     const [value, setValue] = useState<Date | null>(null)
 
+    const [name, setName] = useState('Dong zuzic')
+
     const [selectedField, setSelectedField] = useState<ReviewListProps | null>(null)
 
     const handleOpenModal = (item: ReviewListProps) => {
         setSelectedField(item)
         setOpen(true)
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setName(e.target.value)
     }
 
     useEffect(() => {
@@ -89,7 +102,7 @@ const Review = () => {
                             <StyledCard status={item.status} onClick={() => handleOpenModal(item)}>
                                 <div className="content">
                                     <>
-                                        {item.title} <br />{' '}
+                                        {item.title} <br /> {item.assignee} <br />{' '}
                                         {item.status ? moment(item.approved_date).format(DATE_FORMAT) : '-'}{' '}
                                     </>
                                     <IconButton color="primary" size="small">
@@ -106,6 +119,7 @@ const Review = () => {
             <Dialog open={open} setOpen={setOpen} title="Sign Off & Review" submitLabel="Approve">
                 {selectedField && (
                     <Stack>
+                        <InputField value={name} onChange={handleChange} label="Name" />
                         <DateField value={value} onChange={(val) => setValue(val)} label={selectedField.title} />
                     </Stack>
                 )}
